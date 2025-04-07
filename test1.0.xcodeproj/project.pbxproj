@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2F526E1E2D9E2D5E00B5A26E /* ScreenScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */; };
+		2FC0FB9F2D9E602B0007E3AA /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0FB9E2D9E602B0007E3AA /* MessageModel.m */; };
+		2FC0FBA52D9E618D0007E3AA /* CustomerServiceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0FBA42D9E618D0007E3AA /* CustomerServiceViewModel.m */; };
+		2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0FBAD2D9E62600007E3AA /* MessageToMeCell.m */; };
 		2FD3EF842D9BB1A2006D65D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF7D2D9BB1A2006D65D8 /* AppDelegate.m */; };
 		2FD3EF852D9BB1A2006D65D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF802D9BB1A2006D65D8 /* main.m */; };
 		2FD3EF872D9BB1A2006D65D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FD3EF7E2D9BB1A2006D65D8 /* Assets.xcassets */; };
@@ -21,6 +24,12 @@
 /* Begin PBXFileReference section */
 		2F526E1C2D9E2D5E00B5A26E /* ScreenScaling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenScaling.h; sourceTree = "<group>"; };
 		2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenScaling.m; sourceTree = "<group>"; };
+		2FC0FB9D2D9E602B0007E3AA /* MessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageModel.h; path = test1.0/MessageModel.h; sourceTree = SOURCE_ROOT; };
+		2FC0FB9E2D9E602B0007E3AA /* MessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MessageModel.m; path = test1.0/MessageModel.m; sourceTree = SOURCE_ROOT; };
+		2FC0FBA32D9E618D0007E3AA /* CustomerServiceViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomerServiceViewModel.h; path = test1.0/CustomerServiceViewModel.h; sourceTree = SOURCE_ROOT; };
+		2FC0FBA42D9E618D0007E3AA /* CustomerServiceViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CustomerServiceViewModel.m; path = test1.0/CustomerServiceViewModel.m; sourceTree = SOURCE_ROOT; };
+		2FC0FBAC2D9E62600007E3AA /* MessageToMeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageToMeCell.h; path = test1.0/MessageToMeCell.h; sourceTree = SOURCE_ROOT; };
+		2FC0FBAD2D9E62600007E3AA /* MessageToMeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MessageToMeCell.m; path = test1.0/MessageToMeCell.m; sourceTree = SOURCE_ROOT; };
 		2FD3EF532D9B97D5006D65D8 /* test1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD3EF7C2D9BB1A2006D65D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2FD3EF7D2D9BB1A2006D65D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -70,13 +79,6 @@
 			path = Tool;
 			sourceTree = "<group>";
 		};
-		2F526E1F2D9E3AA500B5A26E /* CellView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CellView;
-			sourceTree = "<group>";
-		};
 		2F526E202D9E3AC200B5A26E /* BarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +88,33 @@
 				2FD3EF9C2D9D23D3006D65D8 /* BottomBar.m */,
 			);
 			path = BarView;
+			sourceTree = "<group>";
+		};
+		2FC0FB9C2D9E5FF00007E3AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FC0FB9D2D9E602B0007E3AA /* MessageModel.h */,
+				2FC0FB9E2D9E602B0007E3AA /* MessageModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FC0FC012D9E6AF10007E3AA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FC0FBA32D9E618D0007E3AA /* CustomerServiceViewModel.h */,
+				2FC0FBA42D9E618D0007E3AA /* CustomerServiceViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FC0FC022D9E6B270007E3AA /* CellViews */ = {
+			isa = PBXGroup;
+			children = (
+				2FC0FBAC2D9E62600007E3AA /* MessageToMeCell.h */,
+				2FC0FBAD2D9E62600007E3AA /* MessageToMeCell.m */,
+			);
+			path = CellViews;
 			sourceTree = "<group>";
 		};
 		2FD3EF4A2D9B97D5006D65D8 = {
@@ -125,7 +154,8 @@
 		2FD3EF892D9BB891006D65D8 /* Customer_service */ = {
 			isa = PBXGroup;
 			children = (
-				2FD3EF8C2D9BB918006D65D8 /* ViewMode */,
+				2FC0FC012D9E6AF10007E3AA /* ViewModel */,
+				2FC0FB9C2D9E5FF00007E3AA /* Model */,
 				2FD3EF8B2D9BB916006D65D8 /* ViewController */,
 				2FD3EF8A2D9BB896006D65D8 /* View */,
 			);
@@ -135,8 +165,8 @@
 		2FD3EF8A2D9BB896006D65D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FC0FC022D9E6B270007E3AA /* CellViews */,
 				2F526E202D9E3AC200B5A26E /* BarView */,
-				2F526E1F2D9E3AA500B5A26E /* CellView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -148,13 +178,6 @@
 				2FD3EF962D9BD359006D65D8 /* ChatVC.m */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		2FD3EF8C2D9BB918006D65D8 /* ViewMode */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewMode;
 			sourceTree = "<group>";
 		};
 		4C23368E210EAF6ABBF81534 /* Frameworks */ = {
@@ -261,11 +284,14 @@
 			files = (
 				2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */,
 				2FD3EF972D9BD359006D65D8 /* ChatVC.m in Sources */,
+				2FC0FBA52D9E618D0007E3AA /* CustomerServiceViewModel.m in Sources */,
 				2F526E1E2D9E2D5E00B5A26E /* ScreenScaling.m in Sources */,
 				2FD3EF942D9BB9AD006D65D8 /* RootController.m in Sources */,
+				2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */,
 				2FD3EF842D9BB1A2006D65D8 /* AppDelegate.m in Sources */,
 				2FD3EF9D2D9D23D4006D65D8 /* BottomBar.m in Sources */,
 				2FD3EF852D9BB1A2006D65D8 /* main.m in Sources */,
+				2FC0FB9F2D9E602B0007E3AA /* MessageModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
