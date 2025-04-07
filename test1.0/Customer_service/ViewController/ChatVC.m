@@ -11,6 +11,7 @@
 #import "TopBar.h"
 #import "BottomBar.h"
 #import "MessageToMeCell.h"
+#import "MessageCell.h"
 
 
 @interface ChatVC ()<TopBarDelegate>
@@ -46,6 +47,10 @@
     _tableView.sectionHeaderHeight = JSHeight(95);
     _tableView.delegate = self;
     _tableView.dataSource = self;
+
+    _tableView.rowHeight = UITableViewAutomaticDimension;
+    _tableView.estimatedRowHeight = 100;
+    
     [self.view addSubview:_tableView];
     
 }
@@ -99,15 +104,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 20;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100;//UITableViewAutomaticDimension;
+    return UITableViewAutomaticDimension;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 300; // 设置一个预估高度
+    return 100; // 设置一个预估高度
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -132,7 +137,13 @@
     NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell){
-        cell = [[MessageToMeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        if(indexPath.row % 2 == 0){
+            
+            cell = [[MessageToMeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        } else {
+            
+            cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor clearColor];
         cell.contentView.backgroundColor = [UIColor clearColor];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F509A382DA3AE4B008621D4 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F509A372DA3AE4B008621D4 /* MessageCell.m */; };
 		2F526E1E2D9E2D5E00B5A26E /* ScreenScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */; };
 		2FC0FB9F2D9E602B0007E3AA /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0FB9E2D9E602B0007E3AA /* MessageModel.m */; };
 		2FC0FBA52D9E618D0007E3AA /* CustomerServiceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0FBA42D9E618D0007E3AA /* CustomerServiceViewModel.m */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F509A362DA3AE4B008621D4 /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		2F509A372DA3AE4B008621D4 /* MessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		2F526E1C2D9E2D5E00B5A26E /* ScreenScaling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenScaling.h; sourceTree = "<group>"; };
 		2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenScaling.m; sourceTree = "<group>"; };
 		2FC0FB9D2D9E602B0007E3AA /* MessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageModel.h; path = test1.0/MessageModel.h; sourceTree = SOURCE_ROOT; };
@@ -113,6 +116,8 @@
 			children = (
 				2FC0FBAC2D9E62600007E3AA /* MessageToMeCell.h */,
 				2FC0FBAD2D9E62600007E3AA /* MessageToMeCell.m */,
+				2F509A362DA3AE4B008621D4 /* MessageCell.h */,
+				2F509A372DA3AE4B008621D4 /* MessageCell.m */,
 			);
 			path = CellViews;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */,
 				2FD3EF842D9BB1A2006D65D8 /* AppDelegate.m in Sources */,
 				2FD3EF9D2D9D23D4006D65D8 /* BottomBar.m in Sources */,
+				2F509A382DA3AE4B008621D4 /* MessageCell.m in Sources */,
 				2FD3EF852D9BB1A2006D65D8 /* main.m in Sources */,
 				2FC0FB9F2D9E602B0007E3AA /* MessageModel.m in Sources */,
 			);

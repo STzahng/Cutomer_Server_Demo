@@ -35,27 +35,29 @@
     // 创建头像
     _headpic = [[UIImageView alloc] init];
     [_headpic setImage:[UIImage imageNamed:@"img_chat_head"]];
-    [self.contentView addSubview:_headpic];
     
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.text = @"GM";
-    _nameLabel.font = [UIFont systemFontOfSize:18];
+    _nameLabel.font = [UIFont systemFontOfSize:17];
     _nameLabel.textColor = [UIColor whiteColor];
-    [self.contentView addSubview:_nameLabel];
     
     _bubbleImage = [[UIImageView alloc] init];
-    UIImage *bubbleImage = [UIImage imageNamed:@"bg_chat_message1"];
+    UIImage *bubbleImage = [UIImage imageNamed:@"bg_chat_message2"];
     // 设置9宫格拉伸区域，这里假设气泡图片的边角区域为20像素
-    UIEdgeInsets insets = UIEdgeInsetsMake(100, 100, 100, 100);
+    UIEdgeInsets insets = UIEdgeInsetsMake(28, 15, 7, 10);
     _bubbleImage.image = [bubbleImage resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    [self.contentView addSubview:_bubbleImage];
     
     _messageLabel = [[UILabel alloc] init];
     _messageLabel.numberOfLines = 0;
-    _messageLabel.text = @"Hello, World!!!";
+    _messageLabel.text = @"Are you ready OK？";
     _messageLabel.font = [UIFont systemFontOfSize:16];
     _messageLabel.textColor = [UIColor whiteColor];
-    [_bubbleImage addSubview:_messageLabel];
+
+
+    [self addSubview:_bubbleImage];
+    [self addSubview:_messageLabel];
+    [self addSubview:_headpic];
+    [self addSubview:_nameLabel];
     
 }
 
@@ -67,23 +69,23 @@
     }];
     
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_headpic.mas_right).offset(JSWidth(35));
+        make.left.equalTo(_headpic.mas_right).offset(JSWidth(65));
         make.top.equalTo(self).offset(JSHeight(13));
         make.height.equalTo(@(JSHeight(30)));
     }];
     
-    [_bubbleImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_headpic.mas_right).offset(JSWidth(35));
-        make.top.equalTo(_nameLabel.mas_bottom).offset(JSHeight(12));
-        make.right.lessThanOrEqualTo(self.contentView).offset(-JSWidth(50));
-        make.bottom.equalTo(_messageLabel.mas_bottom).offset(JSHeight(15));
-    }];
-    
     [_messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_bubbleImage).offset(JSWidth(20));
-        make.right.equalTo(_bubbleImage).offset(-JSWidth(20));
-        make.top.equalTo(_bubbleImage).offset(JSHeight(15));
-        make.bottom.equalTo(_bubbleImage).offset(-JSHeight(15));
+        make.left.equalTo(_bubbleImage.mas_left).offset(JSWidth(55));
+        make.top.equalTo(_bubbleImage.mas_top).offset(JSHeight(27));
+        make.right.lessThanOrEqualTo(self.mas_right).offset(-JSWidth(237));
+    }];
+
+    [_bubbleImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_headpic.mas_right).offset(JSWidth(20));
+        make.top.equalTo(_nameLabel.mas_bottom).offset(JSHeight(12));
+        make.right.equalTo(_messageLabel.mas_right).offset(13);
+        make.bottom.equalTo(_messageLabel.mas_bottom).offset(16);
+        make.bottom.equalTo(self).offset(-JSHeight(20));
     }];
     
 }
