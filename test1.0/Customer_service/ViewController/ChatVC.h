@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ChatVC : UIViewController <ChatViewModelDelegate>
+@interface ChatVC : UIViewController <ChatViewModelDelegate,UITextFieldDelegate>  
 
 @property (nonatomic, strong) ChatViewModel *viewModel;
 

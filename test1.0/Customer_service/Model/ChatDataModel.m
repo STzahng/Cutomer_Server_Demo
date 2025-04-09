@@ -35,4 +35,7 @@
     return self.recommendAnswers[recommendId];
 }
 
-@end 
+- (NSString *)getQuestionForRecommendId:(NSString *)recommendId {
+    return [self.recommendQuestions objectAtIndex:[recommendId integerValue] - 1];
+}
+@end

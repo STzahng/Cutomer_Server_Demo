@@ -10,5 +10,5 @@
 - (void)addMessage:(MessageModel *)message;
 - (void)clearMessages;
 - (NSString *)getAnswerForRecommendId:(NSString *)recommendId;
-
-@end 
+- (NSString *)getQuestionForRecommendId:(NSString *)recommendId;
+@end

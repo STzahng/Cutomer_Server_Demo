@@ -24,9 +24,12 @@
 
 - (void)handleRecommendTap:(NSString *)recommendId {
     NSString *answer = [self.dataModel getAnswerForRecommendId:recommendId];
+    NSString *question = [self.dataModel getQuestionForRecommendId:recommendId];
     if (answer) {
-        MessageModel *message = [MessageModel messageWithContent:answer type:MessageTypeSystem];
+        MessageModel *message = [MessageModel messageWithContent:question type:MessageTypeUser];
+        MessageModel *messageToMe = [MessageModel messageWithContent:answer type:MessageTypeSystem];
         [self.dataModel addMessage:message];
+        [self.dataModel addMessage:messageToMe];
         [self notifyDelegate];
     }
 }

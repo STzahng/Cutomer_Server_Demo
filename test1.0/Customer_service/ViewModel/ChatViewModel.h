@@ -17,7 +17,7 @@
 @property (nonatomic, strong, readonly) ChatDataModel *dataModel;
 
 - (void)sendMessage:(NSString *)content;
-- (void)handleRecommendTap:(NSString *)recommendId;
+- (void)handleRecommendTap:(NSString *)recommendId ;
 - (NSArray<MessageModel *> *)getAllMessages;
 - (NSArray<NSString *> *)getRecommendQuestions;
 

@@ -28,6 +28,7 @@
     [self setupViewModel];
     [self setupUI];
     [self setupConstraints];
+    [self setupKeyboard];
 }
 
 - (void)setupViewModel {
@@ -35,7 +36,7 @@
     self.viewModel.delegate = self;
     MessageModel *message =  [MessageModel recommendMessageWithContent:@"推荐问题" recommendId:@"1"];;
     [self.viewModel.dataModel addMessage: message];
-    //[self updateUI];
+    
 }
 
 - (void)setupUI {
@@ -47,6 +48,8 @@
     [self.view addSubview: self.topBar];
     
     _bottomBar = [[BottomBar alloc] init];
+    _bottomBar.messageField.delegate = self;
+    _bottomBar.messageField.returnKeyType = UIReturnKeySend;
     [_bottomBar.sendButton addTarget:self action:@selector(sendButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: self.bottomBar];
     
@@ -61,6 +64,8 @@
     _tableView.estimatedRowHeight = 100;
     
     [self.view addSubview:_tableView];
+    
+    
 }
 
 - (void)setupConstraints {
@@ -89,7 +94,60 @@
     }];
 }
 
+- (void)setupKeyboard {
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeybord:)];
+    [self.view addGestureRecognizer:tapGesture];
+    
+    // 注册键盘通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
 #pragma mark - Actions
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [self sendButtonTapped];
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void) closeKeybord:(UITapGestureRecognizer *)tapGesture {
+    CGPoint location = [tapGesture locationInView: self.view];
+    if (!CGRectContainsPoint(self.bottomBar.messageField.frame, location)){
+        [self.view endEditing:YES];
+    }
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {{
+    // 获取键盘高度
+    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat keyboardHeight = keyboardFrame.size.height;
+    UIEdgeInsets safeAreaInsets = self.view.safeAreaInsets;
+    
+    // 更新底部输入框约束
+    [self.bottomBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(-keyboardHeight + safeAreaInsets.bottom);
+    }];
+    
+    // 调整内容区域滚动位置（如UITableView）
+    [UIView animateWithDuration:0.3 animations:^{{
+        [self.view layoutIfNeeded];
+        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height  - keyboardHeight)];
+    }}];
+}}
+ 
+- (void)keyboardWillHide:(NSNotification *)notification {{
+    [self.bottomBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(0);
+    }];
+    [UIView animateWithDuration:0.3 animations:^{{
+        [self.view layoutIfNeeded];
+    }}];
+}}
 
 - (void)sendButtonTapped {
     NSString *message = self.bottomBar.messageField.text;
@@ -140,7 +198,6 @@
     return 100; // 设置一个预估高度
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     MessageModel *message = self.viewModel.getAllMessages[indexPath.row];
     if(message.type == MessageTypeRecommend){
         static NSString *cellIdentifier = @"OptionMessageCell";
