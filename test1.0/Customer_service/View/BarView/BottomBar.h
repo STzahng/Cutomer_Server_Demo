@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BottomBar : UIView
-@property (nonatomic,strong) UIImageView* backgroundImageView;
+@property (nonatomic,strong) UIImageView *backgroundImageView;
 @property (nonatomic,strong) UITextField *messageField;
 @property (nonatomic,strong) UIButton *emoticonButton;
 @property (nonatomic,strong) UIButton *pictureButton;

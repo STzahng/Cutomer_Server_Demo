@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2F509A382DA3AE4B008621D4 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F509A372DA3AE4B008621D4 /* MessageCell.m */; };
+		2F509A3B2DA3C8AC008621D4 /* OptionMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F509A3A2DA3C8AC008621D4 /* OptionMessageCell.m */; };
+		2F509A3E2DA4BFD2008621D4 /* RecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F509A3D2DA4BFD2008621D4 /* RecommendView.m */; };
 		2F526E1E2D9E2D5E00B5A26E /* ScreenScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */; };
-		2FC0FB9F2D9E602B0007E3AA /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0FB9E2D9E602B0007E3AA /* MessageModel.m */; };
-		2FC0FBA52D9E618D0007E3AA /* CustomerServiceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0FBA42D9E618D0007E3AA /* CustomerServiceViewModel.m */; };
+		2FA4EE112DA524A100DCBB6C /* ChatViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA4EE102DA524A100DCBB6C /* ChatViewModel.m */; };
+		2FA4EE142DA524E300DCBB6C /* ChatDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA4EE132DA524E300DCBB6C /* ChatDataModel.m */; };
 		2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0FBAD2D9E62600007E3AA /* MessageToMeCell.m */; };
 		2FD3EF842D9BB1A2006D65D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF7D2D9BB1A2006D65D8 /* AppDelegate.m */; };
 		2FD3EF852D9BB1A2006D65D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF802D9BB1A2006D65D8 /* main.m */; };
@@ -19,18 +21,24 @@
 		2FD3EF972D9BD359006D65D8 /* ChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF962D9BD359006D65D8 /* ChatVC.m */; };
 		2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF992D9BD523006D65D8 /* TopBar.m */; };
 		2FD3EF9D2D9D23D4006D65D8 /* BottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF9C2D9D23D3006D65D8 /* BottomBar.m */; };
+		2FDBBC5E2DA5218000D27C04 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBBC5D2DA5218000D27C04 /* MessageModel.m */; };
 		651E569165ECB7C1F7DA7F91 /* libPods-test1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C9C8B3F4460DA59F57C566 /* libPods-test1.0.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2F509A362DA3AE4B008621D4 /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		2F509A372DA3AE4B008621D4 /* MessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		2F509A392DA3C8AC008621D4 /* OptionMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionMessageCell.h; sourceTree = "<group>"; };
+		2F509A3A2DA3C8AC008621D4 /* OptionMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptionMessageCell.m; sourceTree = "<group>"; };
+		2F509A3C2DA4BFD2008621D4 /* RecommendView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendView.h; sourceTree = "<group>"; };
+		2F509A3D2DA4BFD2008621D4 /* RecommendView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendView.m; sourceTree = "<group>"; };
 		2F526E1C2D9E2D5E00B5A26E /* ScreenScaling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenScaling.h; sourceTree = "<group>"; };
 		2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenScaling.m; sourceTree = "<group>"; };
-		2FC0FB9D2D9E602B0007E3AA /* MessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageModel.h; path = test1.0/MessageModel.h; sourceTree = SOURCE_ROOT; };
-		2FC0FB9E2D9E602B0007E3AA /* MessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MessageModel.m; path = test1.0/MessageModel.m; sourceTree = SOURCE_ROOT; };
-		2FC0FBA32D9E618D0007E3AA /* CustomerServiceViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomerServiceViewModel.h; path = test1.0/CustomerServiceViewModel.h; sourceTree = SOURCE_ROOT; };
-		2FC0FBA42D9E618D0007E3AA /* CustomerServiceViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CustomerServiceViewModel.m; path = test1.0/CustomerServiceViewModel.m; sourceTree = SOURCE_ROOT; };
+		2FA4EE0E2DA5228500DCBB6C /* MessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		2FA4EE0F2DA524A100DCBB6C /* ChatViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewModel.h; sourceTree = "<group>"; };
+		2FA4EE102DA524A100DCBB6C /* ChatViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewModel.m; sourceTree = "<group>"; };
+		2FA4EE122DA524E300DCBB6C /* ChatDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatDataModel.h; sourceTree = "<group>"; };
+		2FA4EE132DA524E300DCBB6C /* ChatDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatDataModel.m; sourceTree = "<group>"; };
 		2FC0FBAC2D9E62600007E3AA /* MessageToMeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageToMeCell.h; path = test1.0/MessageToMeCell.h; sourceTree = SOURCE_ROOT; };
 		2FC0FBAD2D9E62600007E3AA /* MessageToMeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MessageToMeCell.m; path = test1.0/MessageToMeCell.m; sourceTree = SOURCE_ROOT; };
 		2FD3EF532D9B97D5006D65D8 /* test1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +55,7 @@
 		2FD3EF992D9BD523006D65D8 /* TopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBar.m; sourceTree = "<group>"; };
 		2FD3EF9B2D9D23D3006D65D8 /* BottomBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomBar.h; sourceTree = "<group>"; };
 		2FD3EF9C2D9D23D3006D65D8 /* BottomBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomBar.m; sourceTree = "<group>"; };
+		2FDBBC5D2DA5218000D27C04 /* MessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
 		3052079DD16D610915C862E2 /* Pods-test1.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test1.0.debug.xcconfig"; path = "Target Support Files/Pods-test1.0/Pods-test1.0.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C9C8B3F4460DA59F57C566 /* libPods-test1.0.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test1.0.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B689CA89D9AF9A240747062D /* Pods-test1.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test1.0.release.xcconfig"; path = "Target Support Files/Pods-test1.0/Pods-test1.0.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,8 +105,10 @@
 		2FC0FB9C2D9E5FF00007E3AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2FC0FB9D2D9E602B0007E3AA /* MessageModel.h */,
-				2FC0FB9E2D9E602B0007E3AA /* MessageModel.m */,
+				2FA4EE0E2DA5228500DCBB6C /* MessageModel.h */,
+				2FDBBC5D2DA5218000D27C04 /* MessageModel.m */,
+				2FA4EE122DA524E300DCBB6C /* ChatDataModel.h */,
+				2FA4EE132DA524E300DCBB6C /* ChatDataModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,8 +116,8 @@
 		2FC0FC012D9E6AF10007E3AA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2FC0FBA32D9E618D0007E3AA /* CustomerServiceViewModel.h */,
-				2FC0FBA42D9E618D0007E3AA /* CustomerServiceViewModel.m */,
+				2FA4EE0F2DA524A100DCBB6C /* ChatViewModel.h */,
+				2FA4EE102DA524A100DCBB6C /* ChatViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -118,6 +129,10 @@
 				2FC0FBAD2D9E62600007E3AA /* MessageToMeCell.m */,
 				2F509A362DA3AE4B008621D4 /* MessageCell.h */,
 				2F509A372DA3AE4B008621D4 /* MessageCell.m */,
+				2F509A392DA3C8AC008621D4 /* OptionMessageCell.h */,
+				2F509A3A2DA3C8AC008621D4 /* OptionMessageCell.m */,
+				2F509A3C2DA4BFD2008621D4 /* RecommendView.h */,
+				2F509A3D2DA4BFD2008621D4 /* RecommendView.m */,
 			);
 			path = CellViews;
 			sourceTree = "<group>";
@@ -287,17 +302,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F509A3B2DA3C8AC008621D4 /* OptionMessageCell.m in Sources */,
 				2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */,
+				2F509A3E2DA4BFD2008621D4 /* RecommendView.m in Sources */,
 				2FD3EF972D9BD359006D65D8 /* ChatVC.m in Sources */,
-				2FC0FBA52D9E618D0007E3AA /* CustomerServiceViewModel.m in Sources */,
 				2F526E1E2D9E2D5E00B5A26E /* ScreenScaling.m in Sources */,
+				2FA4EE142DA524E300DCBB6C /* ChatDataModel.m in Sources */,
 				2FD3EF942D9BB9AD006D65D8 /* RootController.m in Sources */,
 				2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */,
+				2FDBBC5E2DA5218000D27C04 /* MessageModel.m in Sources */,
 				2FD3EF842D9BB1A2006D65D8 /* AppDelegate.m in Sources */,
 				2FD3EF9D2D9D23D4006D65D8 /* BottomBar.m in Sources */,
 				2F509A382DA3AE4B008621D4 /* MessageCell.m in Sources */,
 				2FD3EF852D9BB1A2006D65D8 /* main.m in Sources */,
-				2FC0FB9F2D9E602B0007E3AA /* MessageModel.m in Sources */,
+				2FA4EE112DA524A100DCBB6C /* ChatViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,9 +12,9 @@
 #import "BottomBar.h"
 #import "MessageToMeCell.h"
 #import "MessageCell.h"
+#import "OptionMessageCell.h"
 
-
-@interface ChatVC ()<TopBarDelegate>
+@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate>
 @property (nonatomic, strong) UIImageView* backgroundImageView;
 @property (nonatomic, strong) TopBar *topBar;
 @property (nonatomic, strong) BottomBar *bottomBar;
@@ -25,20 +25,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupViewModel];
     [self setupUI];
     [self setupConstraints];
 }
 
-- (void)setupUI{
+- (void)setupViewModel {
+    self.viewModel = [[ChatViewModel alloc] init];
+    self.viewModel.delegate = self;
+    MessageModel *message =  [MessageModel recommendMessageWithContent:@"推荐问题" recommendId:@"1"];;
+    [self.viewModel.dataModel addMessage: message];
+    //[self updateUI];
+}
+
+- (void)setupUI {
     _backgroundImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed: @"bg_chat_background"]];
     [self.view insertSubview: self.backgroundImageView atIndex: 0];
     
     _topBar = [[TopBar alloc] init];
+    _topBar.delegate = self;
     [self.view addSubview: self.topBar];
     
     _bottomBar = [[BottomBar alloc] init];
+    [_bottomBar.sendButton addTarget:self action:@selector(sendButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: self.bottomBar];
-    
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.backgroundColor = [UIColor clearColor];
@@ -47,13 +57,12 @@
     _tableView.sectionHeaderHeight = JSHeight(95);
     _tableView.delegate = self;
     _tableView.dataSource = self;
-
     _tableView.rowHeight = UITableViewAutomaticDimension;
     _tableView.estimatedRowHeight = 100;
     
     [self.view addSubview:_tableView];
-    
 }
+
 - (void)setupConstraints {
     [_backgroundImageView mas_makeConstraints:^(MASConstraintMaker* make){
         make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
@@ -78,9 +87,18 @@
         make.bottom.equalTo(_bottomBar.mas_top);
         make.left.right.equalTo(self.view);
     }];
-    
-    
 }
+
+#pragma mark - Actions
+
+- (void)sendButtonTapped {
+    NSString *message = self.bottomBar.messageField.text;
+    if (message.length > 0) {
+        [self.viewModel sendMessage:message];
+        self.bottomBar.messageField.text = @"";
+    }
+}
+
 - (NSString *)currentTimeString {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"EEE.HH:mm"];
@@ -89,22 +107,29 @@
     return currentTime;
 }
 
-#pragma mark - TopBarDelegate
-- (void)backButtonDidClick:(UIButton *)button {
-    NSLog(@"backButton clicked");
-    [self.navigationController popViewControllerAnimated: YES];
+#pragma mark - ChatViewModelDelegate
+
+- (void)chatViewModel:(ChatViewModel *)viewModel didUpdateMessages:(NSArray<MessageModel *> *)messages {
+    [self.tableView reloadData];
+    if (messages.count > 0) {
+        NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:messages.count - 1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:lastIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
-#pragma mark - Table view data source
+- (void)chatViewModel:(ChatViewModel *)viewModel didReceiveError:(NSError *)error {
+    // 处理错误
+    NSLog(@"Error: %@", error.localizedDescription);
+}
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 3;
+    return self.viewModel.getAllMessages.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -113,6 +138,37 @@
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 100; // 设置一个预估高度
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    MessageModel *message = self.viewModel.getAllMessages[indexPath.row];
+    if(message.type == MessageTypeRecommend){
+        static NSString *cellIdentifier = @"OptionMessageCell";
+        OptionMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[OptionMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell.delegate = self;
+        }
+        [cell configureWithMessage:message];
+        return cell;
+    }
+    else if (message.type == MessageTypeSystem) {
+        static NSString *cellIdentifier = @"MessageToMeCell";
+        MessageToMeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[MessageToMeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        [cell configureWithMessage:message];
+        return cell;
+    } else {
+        static NSString *cellIdentifier = @"MessageCell";
+        MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        [cell configureWithMessage:message];
+        return cell;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -133,22 +189,16 @@
     return headerView;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if(!cell){
-        if(indexPath.row % 2 == 0){
-            
-            cell = [[MessageToMeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        } else {
-            
-            cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor clearColor];
-        cell.contentView.backgroundColor = [UIColor clearColor];
-        
-    }
-    return cell;
+#pragma mark - TopBarDelegate
+
+- (void)backButtonDidClick:(UIButton *)button {
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - OptionMessageCellDelegate
+
+- (void)optionMessageCell:(OptionMessageCell *)cell didSelectRecommendId:(NSString *)recommendId {
+    [self.viewModel handleRecommendTap:recommendId];
+}
+
 @end

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MessageCell : UITableViewCell
 
+- (void)configureWithMessage:(MessageModel *)message;
+
 @end
 
 NS_ASSUME_NONNULL_END

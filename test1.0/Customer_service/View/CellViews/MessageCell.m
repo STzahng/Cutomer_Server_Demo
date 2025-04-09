@@ -57,7 +57,7 @@
 
 - (void)setupConstraints {
     [_headpic mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).inset(JSWidth(27));
+        make.right.equalTo(self).inset(JSWidth(28));
         make.top.equalTo(self);
         make.width.height.equalTo(@(JSWidth(135)));
     }];
@@ -75,6 +75,11 @@
         make.bottom.equalTo(_messageLabel.mas_bottom).offset(16);
         make.bottom.equalTo(self).offset(-JSHeight(20));
     }];
+}
+
+
+- (void)configureWithMessage:(MessageModel *)message {
+    _messageLabel.text = message.content;
 }
 
 @end
