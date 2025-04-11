@@ -13,11 +13,14 @@
 #import "MessageToMeCell.h"
 #import "MessageCell.h"
 #import "OptionMessageCell.h"
+#import "NoticeScrollView.h"
+#import "NoticeAlertView.h"
 
-@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate>
+@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate>
 @property (nonatomic, strong) UIImageView* backgroundImageView;
 @property (nonatomic, strong) TopBar *topBar;
 @property (nonatomic, strong) BottomBar *bottomBar;
+@property (nonatomic, strong) NoticeScrollView *noticeView;
 @property (nonatomic, strong) UITableView* tableView;
 @end
 
@@ -65,7 +68,19 @@
     
     [self.view addSubview:_tableView];
     
+    // 创建公告栏
+    _noticeView = [[NoticeScrollView alloc] init];
+    _noticeView.delegate = self;
+    [self.view addSubview:_noticeView];
+
+    // 设置公告内容
+    NSArray *titles = @[@"公告1：系统维护通知", @"公告2：新版本更新", @"公告3：活动预告"];
+    NSArray *contents = @[@"系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...", @"新版本v2.0已发布...", @"下周将举行周年庆活动..."];
+    [_noticeView setNoticeTitles:titles contents:contents];
     
+    
+    // 开始自动滚动（每3秒切换一次）
+    [_noticeView startAutoScrollWithInterval:3.0];
 }
 
 - (void)setupConstraints {
@@ -81,6 +96,13 @@
         make.height.equalTo(@(JSHeight(90)));
     }];
     
+    [_noticeView mas_makeConstraints:^(MASConstraintMaker* make){
+        make.top.equalTo(_topBar.mas_bottom);
+        make.bottom.equalTo(_tableView.mas_top);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(@(JSHeight(85)));
+    }];
+    
     [_bottomBar mas_makeConstraints:^(MASConstraintMaker* make){
         make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
         make.left.right.equalTo(self.view);
@@ -88,7 +110,7 @@
     }];
     
     [_tableView mas_makeConstraints:^(MASConstraintMaker* make){
-        make.top.equalTo(_topBar.mas_bottom);
+        make.top.equalTo(_noticeView.mas_bottom);
         make.bottom.equalTo(_bottomBar.mas_top);
         make.left.right.equalTo(self.view);
     }];
@@ -108,6 +130,19 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
 }
+// 实现代理方法
+
+- (void)noticeScrollView:(NoticeScrollView *)scrollView didSelectNoticeAtIndex:(NSInteger)index {
+    NSString *title = scrollView.noticeTitles[index];
+    NSString *content = scrollView.noticeContents[index];
+
+    NoticeAlertView *alertView = [[NoticeAlertView alloc] initWithTitle:title notice:content];
+    __weak typeof(self) weakSelf = self;
+
+    [alertView showInView:weakSelf.view];
+    
+}
+
 #pragma mark - Actions
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     [self sendButtonTapped];
@@ -162,7 +197,7 @@
     [dateFormatter setDateFormat:@"EEE.HH:mm"];
     [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
     NSString *currentTime = [dateFormatter stringFromDate:[NSDate date]];
-    return currentTime;
+    return currentTime; 
 }
 
 #pragma mark - ChatViewModelDelegate

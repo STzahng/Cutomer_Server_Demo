@@ -6,7 +6,6 @@
 //
 
 #import "BottomBar.h"
-#import "Masonry/Masonry.h"
 #import "ScreenScaling.h"
 
 @implementation BottomBar
@@ -115,7 +114,6 @@
     CGSize newSize = [textView sizeThatFits:CGSizeMake(textView.frame.size.width, CGFLOAT_MAX)];
     CGFloat newHeight =  newSize.height;
     newHeight = newHeight > JSHeight(85) ? newHeight : JSHeight(85);
-    NSLog(@"newHeight: %f", newHeight);
     if (newHeight > MAXHEIGHT) {
         textView.scrollEnabled = YES;
         newHeight = MAXHEIGHT;

@@ -11,6 +11,8 @@
 		2F509A3B2DA3C8AC008621D4 /* OptionMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F509A3A2DA3C8AC008621D4 /* OptionMessageCell.m */; };
 		2F509A3E2DA4BFD2008621D4 /* RecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F509A3D2DA4BFD2008621D4 /* RecommendView.m */; };
 		2F526E1E2D9E2D5E00B5A26E /* ScreenScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */; };
+		2FA0D18C2DA7A0E000370D61 /* NoticeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D18B2DA7A0E000370D61 /* NoticeScrollView.m */; };
+		2FA0D1912DA8E2EE00370D61 /* NoticeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D1902DA8E2EE00370D61 /* NoticeAlertView.m */; };
 		2FA4EE112DA524A100DCBB6C /* ChatViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA4EE102DA524A100DCBB6C /* ChatViewModel.m */; };
 		2FA4EE142DA524E300DCBB6C /* ChatDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA4EE132DA524E300DCBB6C /* ChatDataModel.m */; };
 		2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0FBAD2D9E62600007E3AA /* MessageToMeCell.m */; };
@@ -34,6 +36,10 @@
 		2F509A3D2DA4BFD2008621D4 /* RecommendView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendView.m; sourceTree = "<group>"; };
 		2F526E1C2D9E2D5E00B5A26E /* ScreenScaling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenScaling.h; sourceTree = "<group>"; };
 		2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenScaling.m; sourceTree = "<group>"; };
+		2FA0D18A2DA7A0E000370D61 /* NoticeScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeScrollView.h; sourceTree = "<group>"; };
+		2FA0D18B2DA7A0E000370D61 /* NoticeScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeScrollView.m; sourceTree = "<group>"; };
+		2FA0D18F2DA8E2EE00370D61 /* NoticeAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeAlertView.h; sourceTree = "<group>"; };
+		2FA0D1902DA8E2EE00370D61 /* NoticeAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeAlertView.m; sourceTree = "<group>"; };
 		2FA4EE0E2DA5228500DCBB6C /* MessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		2FA4EE0F2DA524A100DCBB6C /* ChatViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewModel.h; sourceTree = "<group>"; };
 		2FA4EE102DA524A100DCBB6C /* ChatViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewModel.m; sourceTree = "<group>"; };
@@ -98,8 +104,19 @@
 				2FD3EF992D9BD523006D65D8 /* TopBar.m */,
 				2FD3EF9B2D9D23D3006D65D8 /* BottomBar.h */,
 				2FD3EF9C2D9D23D3006D65D8 /* BottomBar.m */,
+				2FA0D18A2DA7A0E000370D61 /* NoticeScrollView.h */,
+				2FA0D18B2DA7A0E000370D61 /* NoticeScrollView.m */,
 			);
 			path = BarView;
+			sourceTree = "<group>";
+		};
+		2FA0D18E2DA8E2AC00370D61 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				2FA0D18F2DA8E2EE00370D61 /* NoticeAlertView.h */,
+				2FA0D1902DA8E2EE00370D61 /* NoticeAlertView.m */,
+			);
+			path = AlertView;
 			sourceTree = "<group>";
 		};
 		2FC0FB9C2D9E5FF00007E3AA /* Model */ = {
@@ -174,9 +191,9 @@
 		2FD3EF892D9BB891006D65D8 /* Customer_service */ = {
 			isa = PBXGroup;
 			children = (
-				2FC0FC012D9E6AF10007E3AA /* ViewModel */,
 				2FC0FB9C2D9E5FF00007E3AA /* Model */,
 				2FD3EF8B2D9BB916006D65D8 /* ViewController */,
+				2FC0FC012D9E6AF10007E3AA /* ViewModel */,
 				2FD3EF8A2D9BB896006D65D8 /* View */,
 			);
 			path = Customer_service;
@@ -185,6 +202,7 @@
 		2FD3EF8A2D9BB896006D65D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FA0D18E2DA8E2AC00370D61 /* AlertView */,
 				2FC0FC022D9E6B270007E3AA /* CellViews */,
 				2F526E202D9E3AC200B5A26E /* BarView */,
 			);
@@ -303,9 +321,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F509A3B2DA3C8AC008621D4 /* OptionMessageCell.m in Sources */,
+				2FA0D1912DA8E2EE00370D61 /* NoticeAlertView.m in Sources */,
 				2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */,
 				2F509A3E2DA4BFD2008621D4 /* RecommendView.m in Sources */,
 				2FD3EF972D9BD359006D65D8 /* ChatVC.m in Sources */,
+				2FA0D18C2DA7A0E000370D61 /* NoticeScrollView.m in Sources */,
 				2F526E1E2D9E2D5E00B5A26E /* ScreenScaling.m in Sources */,
 				2FA4EE142DA524E300DCBB6C /* ChatDataModel.m in Sources */,
 				2FD3EF942D9BB9AD006D65D8 /* RootController.m in Sources */,
