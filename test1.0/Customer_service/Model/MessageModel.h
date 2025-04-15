@@ -19,6 +19,8 @@ typedef NS_ENUM(NSUInteger, MessageType) {
 @property (nonatomic, assign) MessageType type;
 @property (nonatomic, strong) NSDate *timestamp;
 @property (nonatomic, copy) NSString *recommendId; // 如果是推荐消息，存储推荐ID
+@property (nonatomic, assign)BOOL isTranslated;
+@property (nonatomic, copy) NSString *translatedContent;
 
 + (instancetype)messageWithContent:(NSString *)content type:(MessageType)type;
 + (instancetype)recommendMessageWithContent:(NSString *)content recommendId:(NSString *)recommendId;

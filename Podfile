@@ -5,5 +5,6 @@
 target 'test1.0' do
     pod 'Masonry'
     pod 'AFNetworking'
+    pod 'GoogleTranslateAPI'
     pod 'LookinServer', :configurations => ['Debug']
 end

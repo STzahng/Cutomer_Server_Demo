@@ -15,6 +15,8 @@
     message.content = content;
     message.type = type;
     message.timestamp = [NSDate date];
+    message.isTranslated = NO;
+    message.translatedContent = @"fanyijieguo";
     return message;
 }
 

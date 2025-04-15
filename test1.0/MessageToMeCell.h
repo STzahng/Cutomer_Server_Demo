@@ -10,5 +10,5 @@
 @interface MessageToMeCell : UITableViewCell
 
 - (void)configureWithMessage:(MessageModel *)message;
-
+@property (nonatomic, copy) void (^tapAction)(NSIndexPath *indexPath);
 @end

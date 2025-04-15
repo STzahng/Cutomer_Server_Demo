@@ -7,80 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "804BE1AC-BDC8-4D44-93FB-1B5361E99491"
+            uuid = "D1E4EECD-4F5A-4817-BFF8-38C28C33DEAD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/View/BarView/BottomBar.m"
+            filePath = "test1.0/MessageToMeCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-textViewDidChange:"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "-translateButtonDidClick"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BC44B7C4-D644-466B-ADA0-1A30A086F1FE"
+            uuid = "CB398B3D-0C6E-44A5-A693-118A5837738C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/View/BarView/BottomBar.m"
+            filePath = "test1.0/MessageToMeCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "-textViewDidChange:"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "-configureWithMessage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "97593433-E89E-4F49-B289-478CA4E95279"
+            uuid = "7E978D97-B075-4BCC-9109-C8E9490745B0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/View/BarView/BottomBar.m"
+            filePath = "test1.0/MessageToMeCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "-textViewDidChange:"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "-showTranslation"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1244A2A5-B4B9-4DA3-A6CA-0E1BCA0DE84B"
+            uuid = "598CB8D3-6921-4E12-A6AA-6BE042D2BC8E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/View/BarView/NoticeScrollView.m"
+            filePath = "test1.0/Customer_service/ViewController/ChatVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "-dealloc"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C105CAB7-AB9E-44E3-9A9F-9DD3A7900597"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/View/AlertView/NoticeAlertView.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "-dismiss"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

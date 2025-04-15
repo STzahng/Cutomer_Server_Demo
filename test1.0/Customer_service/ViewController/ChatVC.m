@@ -77,8 +77,6 @@
     NSArray *titles = @[@"公告1：系统维护通知", @"公告2：新版本更新", @"公告3：活动预告"];
     NSArray *contents = @[@"系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...系统将于今晚12点进行维护...", @"新版本v2.0已发布...", @"下周将举行周年庆活动..."];
     [_noticeView setNoticeTitles:titles contents:contents];
-    
-    
     // 开始自动滚动（每3秒切换一次）
     [_noticeView startAutoScrollWithInterval:3.0];
 }
@@ -249,6 +247,15 @@
         MessageToMeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[MessageToMeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell.tapAction = ^(NSIndexPath *indexPath) {
+                // 更新对应的模型
+                MessageModel *message = self.viewModel.getAllMessages[indexPath.row];
+                message.isTranslated = YES;
+                message.translatedContent = message.content; // 实际中应该是真正的翻译结果
+                
+                // 刷新UI
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            };
         }
         [cell configureWithMessage:message];
         return cell;
