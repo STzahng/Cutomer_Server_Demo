@@ -79,4 +79,8 @@
         self.tapAction();
     }
 }
+
+- (void)setupWithAttributedTitle:(NSAttributedString *)attributedTitle {
+    _questionLabel.attributedText = attributedTitle;
+}
 @end

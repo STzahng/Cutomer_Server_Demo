@@ -19,6 +19,29 @@
             @"3": @"礼包未收到处理方案：\n1. 检查支付是否成功\n2. 查看邮箱是否收到\n3. 检查背包物品\n4. 联系客服提供订单号",
             @"4": @"征服赛季规则说明：\n1. 赛季持续30天加长文本加长文本加长文本加长文本加长文本加长文本\n2. 根据积分排名\n3. 赛季结束发放奖励\n4. 新赛季自动开始"
         };
+        
+        _searchQuestions = @[
+            @"如何购买游戏代币",
+            @"登录遇到问题怎么办",
+            @"支付购买礼包未收到怎么办",
+            @"征服赛季规则说明",
+            @"账号被盗如何找回",
+            @"游戏闪退问题解决",
+            @"如何绑定手机号",
+            @"充值未到账处理",
+            @"游戏更新失败怎么办",
+            @"如何修改密码",
+            @"账号被封禁申诉",
+            @"游戏内举报功能使用",
+            @"如何查看游戏公告",
+            @"游戏内BUG反馈",
+            @"如何联系游戏客服",
+            @"游戏内交易问题",
+            @"如何查看充值记录",
+            @"游戏内活动参与方式",
+            @"如何查看游戏攻略",
+            @"游戏内道具使用说明"
+        ];
     }
     return self;
 }
@@ -37,5 +60,23 @@
 
 - (NSString *)getQuestionForRecommendId:(NSString *)recommendId {
     return [self.recommendQuestions objectAtIndex:[recommendId integerValue] - 1];
+}
+
+- (NSArray<NSString *> *)searchQuestionsWithKeyword:(NSString *)keyword {
+    if (keyword.length == 0) {
+        return _recommendQuestions;
+    }
+    
+    NSMutableArray *matchedQuestions = [NSMutableArray array];
+    for (NSString *question in self.searchQuestions) {
+        if ([question rangeOfString:keyword options:NSCaseInsensitiveSearch].location != NSNotFound) {
+            NSLog(question);
+            [matchedQuestions addObject:question];
+        }
+        if(matchedQuestions.count > 4){
+            break;
+        }
+    }
+    return matchedQuestions;
 }
 @end

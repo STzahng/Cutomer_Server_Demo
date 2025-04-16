@@ -11,9 +11,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RecommendView : UIView
 
-- (instancetype)initWithTitle:(NSString *)title;
-
 @property (nonatomic, copy) void (^tapAction)(void);
+
+- (instancetype)initWithTitle:(NSString *)title;
+- (void)setupWithAttributedTitle:(NSAttributedString *)attributedTitle;
 @end
 
 NS_ASSUME_NONNULL_END

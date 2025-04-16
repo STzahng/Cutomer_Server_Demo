@@ -15,13 +15,15 @@
 #import "OptionMessageCell.h"
 #import "NoticeScrollView.h"
 #import "NoticeAlertView.h"
+#import "KeywordsView.h"
 
-@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate>
+@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate,UITextViewDelegate, KeywordsViewDelegate>
 @property (nonatomic, strong) UIImageView* backgroundImageView;
 @property (nonatomic, strong) TopBar *topBar;
 @property (nonatomic, strong) BottomBar *bottomBar;
 @property (nonatomic, strong) NoticeScrollView *noticeView;
 @property (nonatomic, strong) UITableView* tableView;
+@property (nonatomic, strong) KeywordsView *keywordsView;
 @end
 
 @implementation ChatVC
@@ -52,8 +54,12 @@
     
     _bottomBar = [[BottomBar alloc] init];
     _bottomBar.messageField.delegate = self;
-    _bottomBar.messageField.returnKeyType = UIReturnKeySend;
+    //_bottomBar.messageField.returnKeyType = UIReturnKeySend;
     [_bottomBar.sendButton addTarget:self action:@selector(sendButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textViewDidChange:)
+                                                 name:UITextViewTextDidChangeNotification
+                                               object:_bottomBar.messageField];
     [self.view addSubview: self.bottomBar];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -67,6 +73,10 @@
     _tableView.estimatedRowHeight = 100;
     
     [self.view addSubview:_tableView];
+    
+    _keywordsView = [[KeywordsView alloc] init];
+    _keywordsView.delegate = self;
+    [self.view addSubview:_keywordsView];
     
     // 创建公告栏
     _noticeView = [[NoticeScrollView alloc] init];
@@ -107,6 +117,12 @@
         make.height.equalTo(@(JSHeight(145)));
     }];
     
+    [_keywordsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(_bottomBar.mas_top);
+        make.height.lessThanOrEqualTo(@(JSHeight(600))); // 最多显示5个，每个高度约120
+    }];
+    
     [_tableView mas_makeConstraints:^(MASConstraintMaker* make){
         make.top.equalTo(_noticeView.mas_bottom);
         make.bottom.equalTo(_bottomBar.mas_top);
@@ -140,7 +156,24 @@
     [alertView showInView:weakSelf.view];
     
 }
+#pragma mark - UITextView Notification Handler
 
+- (void)textViewDidChange:(NSNotification *)notification {
+    // 1. 获取当前输入框的文本
+    NSString *searchText = self.bottomBar.messageField.text;
+    [self performSearchWithText:searchText];
+}
+
+- (void)performSearchWithText:(NSString *)searchText {
+    if (searchText.length > 0) {
+
+        _keywordsView.hidden = NO;
+        NSArray *matchedQuestions = [self.viewModel.dataModel searchQuestionsWithKeyword:searchText];
+        [_keywordsView updateWithSearchKeyword:searchText questions:matchedQuestions];
+    } else {
+        _keywordsView.hidden = YES;
+    }
+}
 #pragma mark - Actions
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     [self sendButtonTapped];
@@ -187,6 +220,9 @@
     if (message.length > 0) {
         [self.viewModel sendMessage:message];
         self.bottomBar.messageField.text = @"";
+    }
+    if (!_keywordsView.hidden){
+        _keywordsView.hidden = YES;
     }
 }
 
@@ -300,4 +336,11 @@
     [self.viewModel handleRecommendTap:recommendId];
 }
 
+#pragma mark - KeywordsViewDelegate
+
+- (void)didSelectQuestion:(NSString *)question {
+    [self.viewModel handleserach:question];
+    _bottomBar.messageField.text = @"";
+    _keywordsView.hidden = YES;
+}
 @end

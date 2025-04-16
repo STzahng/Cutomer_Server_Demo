@@ -158,7 +158,7 @@
     
     // 3秒后显示翻译结果
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        // 停止动画，恢复按钮图片
+        // 停止动画，恢复按钮图片d
         [self stopRotationAnimation];
         [_translatedButton setImage:[UIImage imageNamed:@"btn_chat_translation"] forState:UIControlStateNormal];
         
@@ -169,7 +169,6 @@
         self.tapAction(indexPath);
     });
 }
-
 - (void)showTranslation {
     // 标记为已翻译
     _isTranslated = YES;

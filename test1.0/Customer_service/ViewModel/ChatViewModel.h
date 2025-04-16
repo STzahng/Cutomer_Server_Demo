@@ -18,6 +18,7 @@
 
 - (void)sendMessage:(NSString *)content;
 - (void)handleRecommendTap:(NSString *)recommendId ;
+- (void)handleserach:(NSString *)serachquestion;
 - (NSArray<MessageModel *> *)getAllMessages;
 - (NSArray<NSString *> *)getRecommendQuestions;
 

@@ -15,6 +15,7 @@
 		2FA0D1912DA8E2EE00370D61 /* NoticeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D1902DA8E2EE00370D61 /* NoticeAlertView.m */; };
 		2FA0D1E42DACD10F00370D61 /* APIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D1E32DACD10F00370D61 /* APIConfig.m */; };
 		2FA0D1E72DACD19800370D61 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D1E62DACD19800370D61 /* NetworkManager.m */; };
+		2FA0D2102DAE357000370D61 /* KeywordsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D20F2DAE357000370D61 /* KeywordsView.m */; };
 		2FA4EE112DA524A100DCBB6C /* ChatViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA4EE102DA524A100DCBB6C /* ChatViewModel.m */; };
 		2FA4EE142DA524E300DCBB6C /* ChatDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA4EE132DA524E300DCBB6C /* ChatDataModel.m */; };
 		2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC0FBAD2D9E62600007E3AA /* MessageToMeCell.m */; };
@@ -46,6 +47,8 @@
 		2FA0D1E32DACD10F00370D61 /* APIConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIConfig.m; sourceTree = "<group>"; };
 		2FA0D1E52DACD19800370D61 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		2FA0D1E62DACD19800370D61 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		2FA0D20E2DAE357000370D61 /* KeywordsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeywordsView.h; sourceTree = "<group>"; };
+		2FA0D20F2DAE357000370D61 /* KeywordsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeywordsView.m; sourceTree = "<group>"; };
 		2FA4EE0E2DA5228500DCBB6C /* MessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		2FA4EE0F2DA524A100DCBB6C /* ChatViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewModel.h; sourceTree = "<group>"; };
 		2FA4EE102DA524A100DCBB6C /* ChatViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewModel.m; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 				2FD3EF9C2D9D23D3006D65D8 /* BottomBar.m */,
 				2FA0D18A2DA7A0E000370D61 /* NoticeScrollView.h */,
 				2FA0D18B2DA7A0E000370D61 /* NoticeScrollView.m */,
+				2FA0D20E2DAE357000370D61 /* KeywordsView.h */,
+				2FA0D20F2DAE357000370D61 /* KeywordsView.m */,
 			);
 			path = BarView;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */,
 				2FDBBC5E2DA5218000D27C04 /* MessageModel.m in Sources */,
 				2FA0D1E42DACD10F00370D61 /* APIConfig.m in Sources */,
+				2FA0D2102DAE357000370D61 /* KeywordsView.m in Sources */,
 				2FD3EF842D9BB1A2006D65D8 /* AppDelegate.m in Sources */,
 				2FD3EF9D2D9D23D4006D65D8 /* BottomBar.m in Sources */,
 				2F509A382DA3AE4B008621D4 /* MessageCell.m in Sources */,

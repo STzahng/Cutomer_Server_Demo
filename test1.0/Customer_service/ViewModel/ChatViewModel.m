@@ -34,6 +34,14 @@
     }
 }
 
+- (void)handleserach:(NSString *)serachquestion{
+    MessageModel *message = [MessageModel messageWithContent:serachquestion type:MessageTypeUser];
+    MessageModel *messageToMe = [MessageModel messageWithContent:@"仅测试环境下回复"type:MessageTypeSystem];
+    [self.dataModel addMessage:message];
+    [self.dataModel addMessage:messageToMe];
+    [self notifyDelegate];
+}
+
 - (NSArray<MessageModel *> *)getAllMessages {
     return [self.dataModel.messages copy];
 }
