@@ -11,6 +11,7 @@
 		2F509A3B2DA3C8AC008621D4 /* OptionMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F509A3A2DA3C8AC008621D4 /* OptionMessageCell.m */; };
 		2F509A3E2DA4BFD2008621D4 /* RecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F509A3D2DA4BFD2008621D4 /* RecommendView.m */; };
 		2F526E1E2D9E2D5E00B5A26E /* ScreenScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */; };
+		2F713D872DB0D5DC00B58AA9 /* ActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F713D862DB0D5DC00B58AA9 /* ActivityView.m */; };
 		2FA0D18C2DA7A0E000370D61 /* NoticeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D18B2DA7A0E000370D61 /* NoticeScrollView.m */; };
 		2FA0D1912DA8E2EE00370D61 /* NoticeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D1902DA8E2EE00370D61 /* NoticeAlertView.m */; };
 		2FA0D1E42DACD10F00370D61 /* APIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D1E32DACD10F00370D61 /* APIConfig.m */; };
@@ -42,6 +43,8 @@
 		2F509A3D2DA4BFD2008621D4 /* RecommendView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendView.m; sourceTree = "<group>"; };
 		2F526E1C2D9E2D5E00B5A26E /* ScreenScaling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScreenScaling.h; sourceTree = "<group>"; };
 		2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenScaling.m; sourceTree = "<group>"; };
+		2F713D852DB0D5DC00B58AA9 /* ActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityView.h; sourceTree = "<group>"; };
+		2F713D862DB0D5DC00B58AA9 /* ActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityView.m; sourceTree = "<group>"; };
 		2FA0D18A2DA7A0E000370D61 /* NoticeScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeScrollView.h; sourceTree = "<group>"; };
 		2FA0D18B2DA7A0E000370D61 /* NoticeScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeScrollView.m; sourceTree = "<group>"; };
 		2FA0D18F2DA8E2EE00370D61 /* NoticeAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeAlertView.h; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				2FA0D2192DAF815F00370D61 /* EvaluateView.m */,
 				2FA0D21B2DAF825C00370D61 /* GradeView.h */,
 				2FA0D21C2DAF825C00370D61 /* GradeView.m */,
+				2F713D852DB0D5DC00B58AA9 /* ActivityView.h */,
+				2F713D862DB0D5DC00B58AA9 /* ActivityView.m */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 				2FD3EF942D9BB9AD006D65D8 /* RootController.m in Sources */,
 				2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */,
 				2FDBBC5E2DA5218000D27C04 /* MessageModel.m in Sources */,
+				2F713D872DB0D5DC00B58AA9 /* ActivityView.m in Sources */,
 				2FA0D1E42DACD10F00370D61 /* APIConfig.m in Sources */,
 				2FA0D21A2DAF815F00370D61 /* EvaluateView.m in Sources */,
 				2FA0D2162DAF75CB00370D61 /* BaseCell.m in Sources */,
@@ -401,6 +407,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = test1.0/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -426,6 +433,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				EXCLUDED_ARCHS = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = test1.0/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

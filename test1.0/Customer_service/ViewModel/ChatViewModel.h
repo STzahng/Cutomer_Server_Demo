@@ -23,6 +23,7 @@
 - (NSArray<NSString *> *)getRecommendQuestions;
 - (void)sendEvaluateMessageAfterResponse;
 - (void)sendGradeMessageAfterResponse;
+- (void)sendActivityMessageAfterResponse;
 - (void)updateGradeForMessage:(MessageModel *)message withStarRating:(NSInteger)starRating;
 - (void)updateEvaluateForMessage:(MessageModel *)message withResolutionState:(NSString *)state;
 @end

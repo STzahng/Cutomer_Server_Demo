@@ -9,6 +9,7 @@
 #import "ScreenScaling.h"
 #import "EvaluateView.h"
 #import "GradeView.h"
+#import "ActivityView.h"
 
 @interface BaseCell() <GradeViewDelegate, EvaluateViewDelegate>
 
@@ -70,6 +71,8 @@
         case MessageTypeGrade:
             _functionView = [[GradeView alloc] init];
             break;
+        case MessageTypeActivity:
+            _functionView = [[ActivityView alloc] init];
     }
 
     [self.contentView addSubview:_bubbleImage];
@@ -153,6 +156,15 @@
             _functionView = gradeView;
             break;
         }
+        case MessageTypeActivity:{
+            ActivityView *activityView = [[ActivityView alloc] initWithImage:[UIImage imageNamed:@"banner_blessings_2024"]
+                                                                       title:@"小游戏推荐"
+                                                                    subtitle:@"in the game"
+                                                                         url:[NSURL URLWithString:@"https://baidu.com"]];
+            activityView.delegate = self;
+            _functionView = activityView;
+            break;
+        }
         default:
             break;
     }
@@ -164,6 +176,11 @@
 }
 
 #pragma mark - GradeViewDelegate
+
+- (void)activityViewDidTap:(ActivityView *)activityView withURL:(NSURL *)url {
+   // 处理 URL 打开，例如：
+   [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+}
 
 - (void)gradeView:(GradeView *)gradeView didChangeValue:(NSInteger)starRating {
     if (_message) {

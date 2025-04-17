@@ -5,8 +5,10 @@
 //  Created by heiqi on 2025/4/3.
 //
 #import "MessageToMeCell.h"
-#import "Masonry/Masonry.h"
+//#import <YYKit/YYKit.h>
+//#import "YYTextView.h"
 #import "ScreenScaling.h"
+
 
 @interface MessageToMeCell ()
 
@@ -17,7 +19,9 @@
 @property (nonatomic, strong) UIButton *translatedButton;
 @property (nonatomic, strong) UIImageView *translatedLine;
 @property (nonatomic, strong) UILabel *translatedMessage;
+//@property (nonatomic, strong) YYTextView *yyTextView;
 @property (nonatomic, assign) BOOL isTranslated; // 添加标记是否已翻译
+
 
 @end
 
@@ -74,7 +78,13 @@
     
     // 初始化为未翻译状态
     _isTranslated = NO;
+    
+    //_yyTextView = [[YYTextView alloc] initWithFrame:CGRectMake(0, 0, 320, 600)];
+    
+    // 创建文本部分
+    //NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"how to get more\n"];
 
+    
     [self.contentView addSubview:_bubbleImage];
     [self.contentView addSubview:_messageLabel];
     [self.contentView addSubview:_headpic];

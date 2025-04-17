@@ -184,7 +184,7 @@
 }
 
 - (void) sendGradeView {
-    [self.viewModel sendGradeMessageAfterResponse];
+    [self.viewModel sendActivityMessageAfterResponse];
 }
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     [self sendButtonTapped];

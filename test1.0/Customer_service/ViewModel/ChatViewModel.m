@@ -64,12 +64,16 @@
 }
 
 - (void)sendGradeMessageAfterResponse {
-    MessageModel *evaluateMessage = [MessageModel messageWithContent:@"请对人工客服进行评价" type:MessageTypeGrade];
-    evaluateMessage.starRating = 0; // 初始评分为0
-    [self.dataModel addMessage:evaluateMessage];
+    MessageModel *gradeMessage = [MessageModel messageWithContent:@"请对人工客服进行评价" type:MessageTypeGrade];
+    gradeMessage.starRating = 3; // 初始评分为0
+    [self.dataModel addMessage:gradeMessage];
     [self notifyDelegate];
 }
-
+- (void)sendActivityMessageAfterResponse {
+    MessageModel *activeMessage = [MessageModel messageWithContent:@"In the game, players explore the colwinter ice field in the ~ OCR by Picview!" type:MessageTypeActivity];
+    [self.dataModel addMessage:activeMessage];
+    [self notifyDelegate];
+}
 // 处理评分更新
 - (void)updateGradeForMessage:(MessageModel *)message withStarRating:(NSInteger)starRating {
     if (message && message.type == MessageTypeGrade) {
