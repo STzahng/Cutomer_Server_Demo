@@ -17,9 +17,12 @@
 @property (nonatomic, strong, readonly) ChatDataModel *dataModel;
 
 - (void)sendMessage:(NSString *)content;
-- (void)handleRecommendTap:(NSString *)recommendId ;
+- (void)handleRecommendTap:(NSString *)recommendId;
 - (void)handleserach:(NSString *)serachquestion;
 - (NSArray<MessageModel *> *)getAllMessages;
 - (NSArray<NSString *> *)getRecommendQuestions;
-
-@end 
+- (void)sendEvaluateMessageAfterResponse;
+- (void)sendGradeMessageAfterResponse;
+- (void)updateGradeForMessage:(MessageModel *)message withStarRating:(NSInteger)starRating;
+- (void)updateEvaluateForMessage:(MessageModel *)message withResolutionState:(NSString *)state;
+@end

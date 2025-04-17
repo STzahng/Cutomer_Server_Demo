@@ -56,14 +56,7 @@
                                           action:@selector(confirmClick:)];
     [_confirmView addGestureRecognizer:tapGesture];
     
-//    _confirmButton = [[UIButton alloc] init];
-//    _confirmButton.titleLabel.text = @"确定";
-//    _confirmButton.titleLabel.font = [UIFont systemFontOfSize: 22];
-//    _confirmButton.titleLabel.textColor = [UIColor blackColor];
-//    _confirmButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-//    [_confirmButton setBackgroundImage:[UIImage imageNamed: @"btn_chat_yellow"] forState:UIControlStateNormal];
-//    [_confirmButton addTarget: self.delegate action: @selector(cancelButtonDidClick:) forControlEvents: UIControlEventTouchUpInside];
-//    [self addSubview: _confirmButton];
+
     
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.text = @"遊戲服務器卡頓公告";

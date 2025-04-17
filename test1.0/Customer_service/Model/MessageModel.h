@@ -9,7 +9,9 @@
 typedef NS_ENUM(NSUInteger, MessageType) {
     MessageTypeUser,
     MessageTypeSystem,
-    MessageTypeRecommend
+    MessageTypeRecommend,
+    MessageTypeEvaluate,
+    MessageTypeGrade,
 };
 
 @interface MessageModel : NSObject
@@ -19,8 +21,12 @@ typedef NS_ENUM(NSUInteger, MessageType) {
 @property (nonatomic, assign) MessageType type;
 @property (nonatomic, strong) NSDate *timestamp;
 @property (nonatomic, copy) NSString *recommendId; // 如果是推荐消息，存储推荐ID
-@property (nonatomic, assign)BOOL isTranslated;
+@property (nonatomic, assign) BOOL isTranslated;
 @property (nonatomic, copy) NSString *translatedContent;
+@property (nonatomic, assign) NSInteger starRating;
+@property (nonatomic, copy) NSString *resolutionState; // @"unselected"/@"solved"/@"unsolved"
+@property (nonatomic, assign) BOOL hasEvaluated; 
+
 
 + (instancetype)messageWithContent:(NSString *)content type:(MessageType)type;
 + (instancetype)recommendMessageWithContent:(NSString *)content recommendId:(NSString *)recommendId;

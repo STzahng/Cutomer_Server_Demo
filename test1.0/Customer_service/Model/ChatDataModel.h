@@ -14,4 +14,5 @@
 - (NSString *)getAnswerForRecommendId:(NSString *)recommendId;
 - (NSString *)getQuestionForRecommendId:(NSString *)recommendId;
 - (NSArray<NSString *> *)searchQuestionsWithKeyword:(NSString *)keyword;
+
 @end

@@ -7,96 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D1E4EECD-4F5A-4817-BFF8-38C28C33DEAD"
-            shouldBeEnabled = "Yes"
+            uuid = "381EDBA0-2592-4508-8B70-0F898FC72F24"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/MessageToMeCell.m"
+            filePath = "test1.0/Customer_service/View/BaseView/GradeView.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "-translateButtonDidClick"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-setupConstraints"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CB398B3D-0C6E-44A5-A693-118A5837738C"
+            uuid = "8EAE02A8-2E4F-40C5-B354-41703611F08B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/MessageToMeCell.m"
+            filePath = "test1.0/Customer_service/View/CellViews/BaseCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "-configureWithMessage:"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-setupConstraints"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7E978D97-B075-4BCC-9109-C8E9490745B0"
+            uuid = "F5D5CF13-E74B-4829-95DC-0803CF5E23C4"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/MessageToMeCell.m"
+            filePath = "test1.0/Customer_service/View/CellViews/BaseCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-showTranslation"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "598CB8D3-6921-4E12-A6AA-6BE042D2BC8E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/ViewController/ChatVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FD77A2E0-9A07-468A-B451-F0A2C1541B10"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "test1.0/MessageToMeCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "-showTranslation"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DE5C096A-180F-4EAA-83B4-9D8280FE73BA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/Model/ChatDataModel.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-searchQuestionsWithKeyword:"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "-initWithStyle:reuseIdentifier:messageType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

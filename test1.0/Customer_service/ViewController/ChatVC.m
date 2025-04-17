@@ -16,8 +16,9 @@
 #import "NoticeScrollView.h"
 #import "NoticeAlertView.h"
 #import "KeywordsView.h"
+#import "BaseCell.h"
 
-@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate,UITextViewDelegate, KeywordsViewDelegate>
+@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate,UITextViewDelegate, KeywordsViewDelegate, BaseCellDelegate>
 @property (nonatomic, strong) UIImageView* backgroundImageView;
 @property (nonatomic, strong) TopBar *topBar;
 @property (nonatomic, strong) BottomBar *bottomBar;
@@ -60,6 +61,9 @@
                                              selector:@selector(textViewDidChange:)
                                                  name:UITextViewTextDidChangeNotification
                                                object:_bottomBar.messageField];
+    
+    [_bottomBar.emoticonButton addTarget:self action:@selector(sendEvaluateView) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomBar.pictureButton addTarget:self action:@selector(sendGradeView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: self.bottomBar];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -175,6 +179,13 @@
     }
 }
 #pragma mark - Actions
+- (void) sendEvaluateView {
+    [self.viewModel sendEvaluateMessageAfterResponse];
+}
+
+- (void) sendGradeView {
+    [self.viewModel sendGradeMessageAfterResponse];
+}
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     [self sendButtonTapped];
     [textField resignFirstResponder];
@@ -267,6 +278,7 @@
     return 100; // 设置一个预估高度
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     MessageModel *message = self.viewModel.getAllMessages[indexPath.row];
     if(message.type == MessageTypeRecommend){
         static NSString *cellIdentifier = @"OptionMessageCell";
@@ -295,7 +307,7 @@
         }
         [cell configureWithMessage:message];
         return cell;
-    } else {
+    } else if (message.type == MessageTypeUser){
         static NSString *cellIdentifier = @"MessageCell";
         MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
@@ -303,7 +315,16 @@
         }
         [cell configureWithMessage:message];
         return cell;
+    }else {
+        static NSString *cellIdentifier = @"MessagefuntionCell";
+        MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[BaseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier messageType:message.type];
+        }
+        [cell configureWithMessage:message];
+        return cell;
     }
+
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -312,8 +333,10 @@
     
     UILabel* timeLabel = [[UILabel alloc] init];
     timeLabel.text = [self currentTimeString];
-    timeLabel.textColor = [UIColor whiteColor];
-    timeLabel.font = [UIFont systemFontOfSize: 20];
+    //timeLabel.textColor = [UIColor whiteColor];
+    timeLabel.textColor = [UIColor colorWithWhite:1 alpha:0.5];
+
+    timeLabel.font = [UIFont systemFontOfSize: 16];
     [headerView addSubview: timeLabel];
     
     [timeLabel mas_makeConstraints:^(MASConstraintMaker* make){
@@ -342,5 +365,21 @@
     [self.viewModel handleserach:question];
     _bottomBar.messageField.text = @"";
     _keywordsView.hidden = YES;
+}
+
+#pragma mark - BaseCellDelegate
+
+- (void)baseCell:(BaseCell *)cell didSelectRecommendId:(NSString *)recommendId {
+    [self.viewModel handleRecommendTap:recommendId];
+}
+
+- (void)baseCell:(BaseCell *)cell didUpdateGrade:(NSInteger)starRating forMessage:(MessageModel *)message {
+    NSLog(@"更新评分: %ld", (long)starRating);
+    [self.viewModel updateGradeForMessage:message withStarRating:starRating];
+}
+
+- (void)baseCell:(BaseCell *)cell didUpdateEvaluate:(NSString *)resolutionState forMessage:(MessageModel *)message {
+    NSLog(@"更新评价状态: %@", resolutionState);
+    [self.viewModel updateEvaluateForMessage:message withResolutionState:resolutionState];
 }
 @end

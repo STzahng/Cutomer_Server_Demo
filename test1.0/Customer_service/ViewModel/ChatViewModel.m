@@ -55,5 +55,39 @@
         [self.delegate chatViewModel:self didUpdateMessages:[self getAllMessages]];
     }
 }
+// 发送评价对话框消息
+- (void)sendEvaluateMessageAfterResponse {
+    MessageModel *evaluateMessage = [MessageModel messageWithContent:@"请对我们的回复进行评价" type:MessageTypeEvaluate];
+    evaluateMessage.resolutionState = @"unselected"; // 初始状态为未选择
+    [self.dataModel addMessage:evaluateMessage];
+    [self notifyDelegate];
+}
 
-@end 
+- (void)sendGradeMessageAfterResponse {
+    MessageModel *evaluateMessage = [MessageModel messageWithContent:@"请对人工客服进行评价" type:MessageTypeGrade];
+    evaluateMessage.starRating = 0; // 初始评分为0
+    [self.dataModel addMessage:evaluateMessage];
+    [self notifyDelegate];
+}
+
+// 处理评分更新
+- (void)updateGradeForMessage:(MessageModel *)message withStarRating:(NSInteger)starRating {
+    if (message && message.type == MessageTypeGrade) {
+        message.starRating = starRating;
+        // 这里可以添加保存到服务器的逻辑
+        NSLog(@"评分已更新为: %ld", (long)starRating);
+        [self notifyDelegate]; // 通知 UI 刷新
+    }
+}
+
+// 处理评价更新
+- (void)updateEvaluateForMessage:(MessageModel *)message withResolutionState:(NSString *)state {
+    if (message && message.type == MessageTypeEvaluate) {
+        message.resolutionState = state;
+        message.hasEvaluated = YES;
+        // 这里可以添加保存到服务器的逻辑
+        NSLog(@"问题解决状态已更新为: %@", state);
+        [self notifyDelegate]; // 通知 UI 刷新
+    }
+}
+@end

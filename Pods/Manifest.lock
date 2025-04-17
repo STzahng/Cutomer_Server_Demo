@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - HCSStarRatingView (1.5)
   - LookinServer (1.2.8):
     - LookinServer/Core (= 1.2.8)
   - LookinServer/Core (1.2.8)
@@ -21,20 +22,23 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - HCSStarRatingView (~> 1.5)
   - LookinServer
   - Masonry
 
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - HCSStarRatingView
     - LookinServer
     - Masonry
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   LookinServer: 1b2b61c6402ae29fa22182d48f5cd067b4e99e80
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: 324538ef6a4ae8b486027efe69fbaa80a3fa13e1
+PODFILE CHECKSUM: e87879153a26a0d44c660afdb34013f3377ba99d
 
 COCOAPODS: 1.16.2
