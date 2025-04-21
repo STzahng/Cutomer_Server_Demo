@@ -4,7 +4,6 @@
 target 'test1.0' do
     pod 'Masonry'
     pod 'AFNetworking'
-    pod 'YYKit'
     pod 'HCSStarRatingView', '~> 1.5'
     pod 'LookinServer', :configurations => ['Debug']
 end

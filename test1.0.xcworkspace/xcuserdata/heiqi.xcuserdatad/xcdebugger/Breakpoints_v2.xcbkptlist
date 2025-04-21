@@ -23,32 +23,44 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8EAE02A8-2E4F-40C5-B354-41703611F08B"
+            uuid = "B81A4F11-4FB8-44CF-866D-4CEADB2DA878"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/View/CellViews/BaseCell.m"
+            filePath = "test1.0/Customer_service/View/CellViews/ImageTextCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "-setupConstraints"
-            landmarkType = "7">
+            startingLineNumber = "340"
+            endingLineNumber = "340">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F5D5CF13-E74B-4829-95DC-0803CF5E23C4"
+            uuid = "2BD8C52C-3A3B-4514-BE55-97AD11DD6697"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/View/CellViews/BaseCell.m"
+            filePath = "test1.0/Customer_service/View/CellViews/ImageTextCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "-initWithStyle:reuseIdentifier:messageType:"
+            startingLineNumber = "395"
+            endingLineNumber = "395">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7719003-628C-467A-B884-8D47600F74C7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test1.0/Customer_service/View/CellViews/ImageTextCell.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-parseMessageContent:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

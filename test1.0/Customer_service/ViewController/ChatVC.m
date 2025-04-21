@@ -17,6 +17,7 @@
 #import "NoticeAlertView.h"
 #import "KeywordsView.h"
 #import "BaseCell.h"
+#import "ImageTextCell.h"
 
 @interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate,UITextViewDelegate, KeywordsViewDelegate, BaseCellDelegate>
 @property (nonatomic, strong) UIImageView* backgroundImageView;
@@ -312,6 +313,14 @@
         MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        [cell configureWithMessage:message];
+        return cell;
+    }else if (message.type == MessageTypeImageText){
+        static NSString *cellIdentifier = @"MessageTypeImageText";
+        MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[ImageTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
         [cell configureWithMessage:message];
         return cell;

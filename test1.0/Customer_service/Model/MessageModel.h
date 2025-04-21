@@ -13,6 +13,7 @@ typedef NS_ENUM(NSUInteger, MessageType) {
     MessageTypeEvaluate,
     MessageTypeGrade,
     MessageTypeActivity,
+    MessageTypeImageText,
 };
 
 @interface MessageModel : NSObject

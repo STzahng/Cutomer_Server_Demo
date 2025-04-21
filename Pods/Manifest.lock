@@ -19,16 +19,12 @@ PODS:
     - LookinServer/Core (= 1.2.8)
   - LookinServer/Core (1.2.8)
   - Masonry (1.1.0)
-  - YYKit (1.0.9):
-    - YYKit/no-arc (= 1.0.9)
-  - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
   - AFNetworking
   - HCSStarRatingView (~> 1.5)
   - LookinServer
   - Masonry
-  - YYKit
 
 SPEC REPOS:
   trunk:
@@ -36,15 +32,13 @@ SPEC REPOS:
     - HCSStarRatingView
     - LookinServer
     - Masonry
-    - YYKit
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   LookinServer: 1b2b61c6402ae29fa22182d48f5cd067b4e99e80
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 59d77fa360103c3db80b94c7ccc62958b8270c04
+PODFILE CHECKSUM: 8e4684d81f2c5153cd29c467c8cfc2bce1c099a5
 
 COCOAPODS: 1.16.2
