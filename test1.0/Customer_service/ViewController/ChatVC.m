@@ -295,7 +295,7 @@
     
     MessageModel *message = self.viewModel.getAllMessages[indexPath.row];
     if(message.type == MessageTypeRecommend){
-        static NSString *cellIdentifier = @"OptionMessageCell";
+        NSString *cellIdentifier = [NSString stringWithFormat:@"OptionMessageCell_%ld", (long)indexPath.row];
         OptionMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[OptionMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -305,7 +305,7 @@
         return cell;
     }
     else if (message.type == MessageTypeSystem) {
-        static NSString *cellIdentifier = @"MessageToMeCell";
+        NSString *cellIdentifier = [NSString stringWithFormat:@"MessageToMeCell_%ld", (long)indexPath.row];
         MessageToMeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[MessageToMeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -322,7 +322,7 @@
         [cell configureWithMessage:message];
         return cell;
     } else if (message.type == MessageTypeUser){
-        static NSString *cellIdentifier = @"MessageCell";
+        NSString *cellIdentifier = [NSString stringWithFormat:@"MessageCell_%ld", (long)indexPath.row];
         MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -330,7 +330,7 @@
         [cell configureWithMessage:message];
         return cell;
     }else if (message.type == MessageTypeImageText){
-        static NSString *cellIdentifier = @"MessageTypeImageText";
+        NSString *cellIdentifier = [NSString stringWithFormat:@"MessageTypeImageText_%ld", (long)indexPath.row];
         ImageTextCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[ImageTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -339,7 +339,7 @@
         [cell configureWithMessage:message];
         return cell;
     }else {
-        static NSString *cellIdentifier = @"MessagefuntionCell";
+        NSString *cellIdentifier = [NSString stringWithFormat:@"MessagefuntionCell_%ld", (long)indexPath.row];
         BaseCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[BaseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier messageType:message.type];
@@ -410,11 +410,7 @@
 #pragma mark - IamgeTextCellDelegate
 - (void)imageTextCell:(ImageTextCell *)cell withMessage:(MessageModel *)message;{
     NSLog(@"UI更新完成，通知代理");
-    if ([self.viewModel respondsToSelector:@selector(handleMessageUpdated:)]) {
-        NSLog(@"通知ViewModel消息已更新");
-        [self.viewModel performSelector:@selector(handleMessageUpdated:) withObject:message];
-    }
-    //[self.viewModel handleMessageUpdated:message];
+    [self.viewModel handleMessageUpdated:message];
 }
 
 @end

@@ -11,7 +11,8 @@
             @"2.登录遇到问题怎么办",
             @"3.支付购买礼包未收到怎么办",
             @"4.征服赛季规则",
-            @"5.图文测试"
+            @"5.图文测试",
+            @"6.图文测试2"
         ];
         
         _recommendAnswers = @{
@@ -19,7 +20,8 @@
             @"2": @"登录问题解决方案：\n1. 检查网络连接\n2. 确认账号密码正确\n3. 尝试重新登录\n4. 如仍无法解决，请联系客服",
             @"3": @"礼包未收到处理方案：\n1. 检查支付是否成功\n2. 查看邮箱是否收到\n3. 检查背包物品\n4. 联系客服提供订单号",
             @"4": @"征服赛季规则说明：\n1. 赛季持续30天加长文本加长文本加长文本加长文本加长文本加长文本\n2. 根据积分排名\n3. 赛季结束发放奖励\n4. 新赛季自动开始",
-            @"5": @"how to get more\n#image[http://test-eastblue.xinyoudi.com/uploads//image_(1)_67e21f82cdc81.png]{w:634,h:1069} \n 结尾"
+            @"5": @"how to get more\n#image[http://test-eastblue.xinyoudi.com/uploads//image_(1)_67e21f82cdc81.png]{w:634,h:1069} \n 结尾",
+            @"6":@"#image[https://pic4.zhimg.com/v2-91bb05348ab07dfb748bf0d34c84af5b_1440w.jpg]{w:600,h:400}"
         };
         
         _searchQuestions = @[
