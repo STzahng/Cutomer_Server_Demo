@@ -44,6 +44,7 @@ typedef NS_ENUM(NSUInteger, MessageType) {
 // 图片相关的属性
 @property (nonatomic, strong) NSArray<ImageInfo *> *imageInfos;   // 消息中包含的图片信息
 @property (nonatomic, copy) NSString *processedTextContent;       // 处理后的纯文本内容（替换了图片标记的）
+@property (nonatomic, assign) BOOL isImageTextLoaded;             // 图文是否已加载完成
 
 // 图片文本处理相关方法
 - (void)parseImageTextContent;  // 解析消息内容中的图片标记，提取图片信息

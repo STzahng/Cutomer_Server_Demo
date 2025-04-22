@@ -25,7 +25,7 @@
 - (void)handleRecommendTap:(NSString *)recommendId {
     NSString *answer = [self.dataModel getAnswerForRecommendId:recommendId];
     NSString *question = [self.dataModel getQuestionForRecommendId:recommendId];
-    if ([recommendId integerValue] == 5){
+    if ([recommendId integerValue] > 4){
         MessageModel *message = [MessageModel messageWithContent:question type:MessageTypeUser];
         MessageModel *messageToMe = [MessageModel messageWithContent:answer type:MessageTypeImageText];
         [self.dataModel addMessage:message];
@@ -108,7 +108,7 @@
 
 - (void)handleMessageUpdated:(MessageModel *)message {
     NSLog(@"ViewModel处理消息更新，消息ID: %@", message.messageId);
-    //[self notifyDelegate];
+   // [self notifyDelegate];
     if (self.delegate && [self.delegate respondsToSelector:@selector(chatViewModel:didUpdateMessages:)]) {
         // 注意：这里只传递单个消息，如果需要传递所有消息，请修改为获取所有消息的调用
         [self.delegate chatViewModel:self didUpdateMessages:@[message]];

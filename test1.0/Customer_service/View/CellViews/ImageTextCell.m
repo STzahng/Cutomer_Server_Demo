@@ -292,6 +292,9 @@
     // 更新当前消息模型引用
     self.currentMessage = message;
     
+    // 检查消息图文加载状态，如果已完成就不再触发UI更新回调
+    BOOL shouldTriggerDelegate = !message.isImageTextLoaded;
+    
     // 生成最终的富文本
     NSMutableAttributedString *finalText = [[NSMutableAttributedString alloc] init];
     NSString *currentText = message.processedTextContent;
@@ -385,8 +388,20 @@
     [self setNeedsLayout];
     [self layoutIfNeeded];
     
-    
+    if (self.pendingImageURLs.count == 0) {
+        // 更新消息模型的加载状态
+        message.isImageTextLoaded = YES;
+        
+        // 如果是第一次加载完成，通知delegate更新UI
+        if (shouldTriggerDelegate && self.delegate && [self.delegate respondsToSelector:@selector(imageTextCell:withMessage:)]) {
+            NSLog(@"第一次图文加载完毕，触发UI更新回调");
+            [self.delegate imageTextCell:self withMessage:message];
+        }
+    }
 }
 
 @end
-
+/*
+ // 如果所有图片都已处理完成（加载成功或失败），标记消息为已加载
+ 
+ */

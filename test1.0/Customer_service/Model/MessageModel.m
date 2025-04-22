@@ -28,6 +28,7 @@
     message.type = type;
     message.timestamp = [NSDate date];
     message.messageId = [[NSUUID UUID] UUIDString];
+    message.isImageTextLoaded = NO;
     
     // 如果是图文消息，自动解析图片信息
     if (type == MessageTypeImageText) {
