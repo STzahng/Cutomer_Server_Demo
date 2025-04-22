@@ -18,8 +18,9 @@
 #import "KeywordsView.h"
 #import "BaseCell.h"
 #import "ImageTextCell.h"
+#import "ImageCacheService.h"
 
-@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate,UITextViewDelegate, KeywordsViewDelegate, BaseCellDelegate>
+@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate,UITextViewDelegate, KeywordsViewDelegate, BaseCellDelegate, ImageTextCellDelegate>
 @property (nonatomic, strong) UIImageView* backgroundImageView;
 @property (nonatomic, strong) TopBar *topBar;
 @property (nonatomic, strong) BottomBar *bottomBar;
@@ -46,6 +47,18 @@
     
 }
 
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    // 当视图即将消失时，取消所有正在进行的图片下载任务
+    [[ImageCacheService sharedInstance] cancelAllLoadings];
+}
+
+- (void)dealloc {
+    // 清理资源
+    [[ImageCacheService sharedInstance] cancelAllLoadings];
+}
 - (void)setupUI {
     _backgroundImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed: @"bg_chat_background"]];
     [self.view insertSubview: self.backgroundImageView atIndex: 0];
@@ -318,18 +331,20 @@
         return cell;
     }else if (message.type == MessageTypeImageText){
         static NSString *cellIdentifier = @"MessageTypeImageText";
-        MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        ImageTextCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[ImageTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
+        cell.delegate = self;
         [cell configureWithMessage:message];
         return cell;
     }else {
         static NSString *cellIdentifier = @"MessagefuntionCell";
-        MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        BaseCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[BaseCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier messageType:message.type];
         }
+        
         [cell configureWithMessage:message];
         return cell;
     }
@@ -391,4 +406,15 @@
     NSLog(@"更新评价状态: %@", resolutionState);
     [self.viewModel updateEvaluateForMessage:message withResolutionState:resolutionState];
 }
+
+#pragma mark - IamgeTextCellDelegate
+- (void)imageTextCell:(ImageTextCell *)cell withMessage:(MessageModel *)message;{
+    NSLog(@"UI更新完成，通知代理");
+    if ([self.viewModel respondsToSelector:@selector(handleMessageUpdated:)]) {
+        NSLog(@"通知ViewModel消息已更新");
+        [self.viewModel performSelector:@selector(handleMessageUpdated:) withObject:message];
+    }
+    //[self.viewModel handleMessageUpdated:message];
+}
+
 @end

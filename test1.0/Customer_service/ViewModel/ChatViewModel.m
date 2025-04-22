@@ -102,4 +102,18 @@
         [self notifyDelegate]; // 通知 UI 刷新
     }
 }
+- (void)updateAllmessage {
+    [self notifyDelegate]; 
+}
+
+- (void)handleMessageUpdated:(MessageModel *)message {
+    NSLog(@"ViewModel处理消息更新，消息ID: %@", message.messageId);
+    //[self notifyDelegate];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatViewModel:didUpdateMessages:)]) {
+        // 注意：这里只传递单个消息，如果需要传递所有消息，请修改为获取所有消息的调用
+        [self.delegate chatViewModel:self didUpdateMessages:@[message]];
+    }
+
+}
+
 @end

@@ -7,60 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "381EDBA0-2592-4508-8B70-0F898FC72F24"
-            shouldBeEnabled = "No"
+            uuid = "A0616819-59FB-460A-96E9-B9B3E59750E3"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/View/BaseView/GradeView.m"
+            filePath = "test1.0/Customer_service/ViewController/ChatVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-setupConstraints"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
+            landmarkName = "-imageTextCell:withMessage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B81A4F11-4FB8-44CF-866D-4CEADB2DA878"
+            uuid = "4B8B6908-49C8-4AAF-B5AF-28F3755BC9CB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "test1.0/Customer_service/View/CellViews/ImageTextCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2BD8C52C-3A3B-4514-BE55-97AD11DD6697"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/View/CellViews/ImageTextCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "395"
-            endingLineNumber = "395">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E7719003-628C-467A-B884-8D47600F74C7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/View/CellViews/ImageTextCell.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "-parseMessageContent:"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "-requestCurrentMessageModelForUpdate"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

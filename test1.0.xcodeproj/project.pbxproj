@@ -32,6 +32,7 @@
 		2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF992D9BD523006D65D8 /* TopBar.m */; };
 		2FD3EF9D2D9D23D4006D65D8 /* BottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF9C2D9D23D3006D65D8 /* BottomBar.m */; };
 		2FDBBC5E2DA5218000D27C04 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBBC5D2DA5218000D27C04 /* MessageModel.m */; };
+		2FF70FE42DB60A0700D8294C /* ImageCacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF70FE32DB60A0600D8294C /* ImageCacheService.m */; };
 		651E569165ECB7C1F7DA7F91 /* libPods-test1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C9C8B3F4460DA59F57C566 /* libPods-test1.0.a */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,8 @@
 		2FD3EF9B2D9D23D3006D65D8 /* BottomBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomBar.h; sourceTree = "<group>"; };
 		2FD3EF9C2D9D23D3006D65D8 /* BottomBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomBar.m; sourceTree = "<group>"; };
 		2FDBBC5D2DA5218000D27C04 /* MessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		2FF70FE22DB60A0600D8294C /* ImageCacheService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCacheService.h; sourceTree = "<group>"; };
+		2FF70FE32DB60A0600D8294C /* ImageCacheService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCacheService.m; sourceTree = "<group>"; };
 		3052079DD16D610915C862E2 /* Pods-test1.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test1.0.debug.xcconfig"; path = "Target Support Files/Pods-test1.0/Pods-test1.0.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C9C8B3F4460DA59F57C566 /* libPods-test1.0.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test1.0.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B689CA89D9AF9A240747062D /* Pods-test1.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test1.0.release.xcconfig"; path = "Target Support Files/Pods-test1.0/Pods-test1.0.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 		2F526E1B2D9E2CDE00B5A26E /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				2FF70FE22DB60A0600D8294C /* ImageCacheService.h */,
+				2FF70FE32DB60A0600D8294C /* ImageCacheService.m */,
 				2F526E1C2D9E2D5E00B5A26E /* ScreenScaling.h */,
 				2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */,
 			);
@@ -381,6 +386,7 @@
 				2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */,
 				2F509A3E2DA4BFD2008621D4 /* RecommendView.m in Sources */,
 				2FA0D21D2DAF825C00370D61 /* GradeView.m in Sources */,
+				2FF70FE42DB60A0700D8294C /* ImageCacheService.m in Sources */,
 				2FD3EF972D9BD359006D65D8 /* ChatVC.m in Sources */,
 				2FA0D18C2DA7A0E000370D61 /* NoticeScrollView.m in Sources */,
 				2F526E1E2D9E2D5E00B5A26E /* ScreenScaling.m in Sources */,
