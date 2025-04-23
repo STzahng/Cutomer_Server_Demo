@@ -29,6 +29,11 @@
 - (void)updateAllmessage;
 - (void)handleMessageUpdated:(MessageModel *)message;
 
+- (void)startEvaluationTimer;
+- (void)stopEvaluationTimer;
+- (void)resetEvaluationTimer;
+- (void)evaluationTimerExpired;
+
 /**
  * 处理消息更新事件，当消息（特别是图片等资源）加载完成后被调用
  * @param message 已更新的消息模型

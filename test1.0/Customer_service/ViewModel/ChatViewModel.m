@@ -3,6 +3,7 @@
 @interface ChatViewModel ()
 
 @property (nonatomic, strong) ChatDataModel *dataModel;
+@property (nonatomic, strong) NSTimer *evaluationTimer;
 
 @end
 
@@ -19,12 +20,15 @@
 - (void)sendMessage:(NSString *)content {
     MessageModel *message = [MessageModel messageWithContent:content type:MessageTypeUser];
     [self.dataModel addMessage:message];
+    [self resetEvaluationTimer];
+    
     [self notifyDelegate];
 }
 
 - (void)handleRecommendTap:(NSString *)recommendId {
     NSString *answer = [self.dataModel getAnswerForRecommendId:recommendId];
     NSString *question = [self.dataModel getQuestionForRecommendId:recommendId];
+    [self resetEvaluationTimer];
     if ([recommendId integerValue] > 4){
         MessageModel *message = [MessageModel messageWithContent:question type:MessageTypeUser];
         MessageModel *messageToMe = [MessageModel messageWithContent:answer type:MessageTypeImageText];
@@ -47,6 +51,7 @@
     MessageModel *messageToMe = [MessageModel messageWithContent:@"仅测试环境下回复"type:MessageTypeSystem];
     [self.dataModel addMessage:message];
     [self.dataModel addMessage:messageToMe];
+    [self resetEvaluationTimer];
     [self notifyDelegate];
 }
 
@@ -113,7 +118,45 @@
         // 注意：这里只传递单个消息，如果需要传递所有消息，请修改为获取所有消息的调用
         [self.delegate chatViewModel:self didUpdateMessages:@[message]];
     }
+}
 
+#pragma mark - 定时器相关方法
+
+- (void)startEvaluationTimer {
+    [self stopEvaluationTimer]; // 先停止已有定时器
+    
+    // 创建新的10秒定时器
+    self.evaluationTimer = [NSTimer scheduledTimerWithTimeInterval:10
+                                                           target:self
+                                                         selector:@selector(evaluationTimerExpired)
+                                                         userInfo:nil
+                                                          repeats:NO];
+    NSLog(@"评价定时器已启动，10秒后触发");
+}
+
+- (void)stopEvaluationTimer {
+    if (self.evaluationTimer && [self.evaluationTimer isValid]) {
+        [self.evaluationTimer invalidate];
+        self.evaluationTimer = nil;
+        NSLog(@"评价定时器已停止");
+    }
+}
+
+- (void)resetEvaluationTimer {
+    // 只有在用户消息后才启动/重置定时器，而不是所有非用户消息
+    [self startEvaluationTimer];
+    NSLog(@"评价定时器已重置");
+}
+
+- (void)evaluationTimerExpired {
+    NSLog(@"评价定时器触发，发送评价消息");
+    
+    // 发送评价消息和评分消息
+    [self sendEvaluateMessageAfterResponse];
+    [self sendGradeMessageAfterResponse];
+    
+    // 停止定时器，等待用户回复后再次启动
+    [self stopEvaluationTimer];
 }
 
 @end

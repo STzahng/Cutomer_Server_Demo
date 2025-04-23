@@ -15,8 +15,6 @@
 		2F713DD62DB2310500B58AA9 /* ImageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F713DD52DB2310500B58AA9 /* ImageTextCell.m */; };
 		2FA0D18C2DA7A0E000370D61 /* NoticeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D18B2DA7A0E000370D61 /* NoticeScrollView.m */; };
 		2FA0D1912DA8E2EE00370D61 /* NoticeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D1902DA8E2EE00370D61 /* NoticeAlertView.m */; };
-		2FA0D1E42DACD10F00370D61 /* APIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D1E32DACD10F00370D61 /* APIConfig.m */; };
-		2FA0D1E72DACD19800370D61 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D1E62DACD19800370D61 /* NetworkManager.m */; };
 		2FA0D2102DAE357000370D61 /* KeywordsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D20F2DAE357000370D61 /* KeywordsView.m */; };
 		2FA0D2162DAF75CB00370D61 /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D2152DAF75CB00370D61 /* BaseCell.m */; };
 		2FA0D21A2DAF815F00370D61 /* EvaluateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0D2192DAF815F00370D61 /* EvaluateView.m */; };
@@ -32,6 +30,9 @@
 		2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF992D9BD523006D65D8 /* TopBar.m */; };
 		2FD3EF9D2D9D23D4006D65D8 /* BottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3EF9C2D9D23D3006D65D8 /* BottomBar.m */; };
 		2FDBBC5E2DA5218000D27C04 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBBC5D2DA5218000D27C04 /* MessageModel.m */; };
+		2FE05D022DB7979D00238BE0 /* WebSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05D012DB7979D00238BE0 /* WebSocketManager.m */; };
+		2FE05D032DB7979D00238BE0 /* WebSocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05CFF2DB7979D00238BE0 /* WebSocketHelper.m */; };
+		2FE05D042DB7979D00238BE0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2FE05CFD2DB7979D00238BE0 /* README.md */; };
 		2FF70FE42DB60A0700D8294C /* ImageCacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF70FE32DB60A0600D8294C /* ImageCacheService.m */; };
 		651E569165ECB7C1F7DA7F91 /* libPods-test1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C9C8B3F4460DA59F57C566 /* libPods-test1.0.a */; };
 /* End PBXBuildFile section */
@@ -53,10 +54,6 @@
 		2FA0D18B2DA7A0E000370D61 /* NoticeScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeScrollView.m; sourceTree = "<group>"; };
 		2FA0D18F2DA8E2EE00370D61 /* NoticeAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeAlertView.h; sourceTree = "<group>"; };
 		2FA0D1902DA8E2EE00370D61 /* NoticeAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeAlertView.m; sourceTree = "<group>"; };
-		2FA0D1E22DACD10F00370D61 /* APIConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIConfig.h; sourceTree = "<group>"; };
-		2FA0D1E32DACD10F00370D61 /* APIConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIConfig.m; sourceTree = "<group>"; };
-		2FA0D1E52DACD19800370D61 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
-		2FA0D1E62DACD19800370D61 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		2FA0D20E2DAE357000370D61 /* KeywordsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeywordsView.h; sourceTree = "<group>"; };
 		2FA0D20F2DAE357000370D61 /* KeywordsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeywordsView.m; sourceTree = "<group>"; };
 		2FA0D2142DAF75CB00370D61 /* BaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
@@ -87,6 +84,11 @@
 		2FD3EF9B2D9D23D3006D65D8 /* BottomBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomBar.h; sourceTree = "<group>"; };
 		2FD3EF9C2D9D23D3006D65D8 /* BottomBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomBar.m; sourceTree = "<group>"; };
 		2FDBBC5D2DA5218000D27C04 /* MessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		2FE05CFD2DB7979D00238BE0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2FE05CFE2DB7979D00238BE0 /* WebSocketHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebSocketHelper.h; sourceTree = "<group>"; };
+		2FE05CFF2DB7979D00238BE0 /* WebSocketHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebSocketHelper.m; sourceTree = "<group>"; };
+		2FE05D002DB7979D00238BE0 /* WebSocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebSocketManager.h; sourceTree = "<group>"; };
+		2FE05D012DB7979D00238BE0 /* WebSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebSocketManager.m; sourceTree = "<group>"; };
 		2FF70FE22DB60A0600D8294C /* ImageCacheService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCacheService.h; sourceTree = "<group>"; };
 		2FF70FE32DB60A0600D8294C /* ImageCacheService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCacheService.m; sourceTree = "<group>"; };
 		3052079DD16D610915C862E2 /* Pods-test1.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test1.0.debug.xcconfig"; path = "Target Support Files/Pods-test1.0/Pods-test1.0.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,10 +155,11 @@
 		2FA0D1E12DACD03300370D61 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				2FA0D1E22DACD10F00370D61 /* APIConfig.h */,
-				2FA0D1E32DACD10F00370D61 /* APIConfig.m */,
-				2FA0D1E52DACD19800370D61 /* NetworkManager.h */,
-				2FA0D1E62DACD19800370D61 /* NetworkManager.m */,
+				2FE05CFD2DB7979D00238BE0 /* README.md */,
+				2FE05CFE2DB7979D00238BE0 /* WebSocketHelper.h */,
+				2FE05CFF2DB7979D00238BE0 /* WebSocketHelper.m */,
+				2FE05D002DB7979D00238BE0 /* WebSocketManager.h */,
+				2FE05D012DB7979D00238BE0 /* WebSocketManager.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE05D042DB7979D00238BE0 /* README.md in Resources */,
 				2FD3EF872D9BB1A2006D65D8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +387,8 @@
 			files = (
 				2F509A3B2DA3C8AC008621D4 /* OptionMessageCell.m in Sources */,
 				2FA0D1912DA8E2EE00370D61 /* NoticeAlertView.m in Sources */,
+				2FE05D022DB7979D00238BE0 /* WebSocketManager.m in Sources */,
+				2FE05D032DB7979D00238BE0 /* WebSocketHelper.m in Sources */,
 				2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */,
 				2F509A3E2DA4BFD2008621D4 /* RecommendView.m in Sources */,
 				2FA0D21D2DAF825C00370D61 /* GradeView.m in Sources */,
@@ -395,7 +401,6 @@
 				2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */,
 				2FDBBC5E2DA5218000D27C04 /* MessageModel.m in Sources */,
 				2F713D872DB0D5DC00B58AA9 /* ActivityView.m in Sources */,
-				2FA0D1E42DACD10F00370D61 /* APIConfig.m in Sources */,
 				2FA0D21A2DAF815F00370D61 /* EvaluateView.m in Sources */,
 				2FA0D2162DAF75CB00370D61 /* BaseCell.m in Sources */,
 				2FA0D2102DAE357000370D61 /* KeywordsView.m in Sources */,
@@ -404,7 +409,6 @@
 				2FD3EF9D2D9D23D4006D65D8 /* BottomBar.m in Sources */,
 				2F509A382DA3AE4B008621D4 /* MessageCell.m in Sources */,
 				2FD3EF852D9BB1A2006D65D8 /* main.m in Sources */,
-				2FA0D1E72DACD19800370D61 /* NetworkManager.m in Sources */,
 				2FA4EE112DA524A100DCBB6C /* ChatViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

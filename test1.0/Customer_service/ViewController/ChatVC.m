@@ -19,6 +19,7 @@
 #import "BaseCell.h"
 #import "ImageTextCell.h"
 #import "ImageCacheService.h"
+#import "WebSocketHelper.h"
 
 @interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate,UITextViewDelegate, KeywordsViewDelegate, BaseCellDelegate, ImageTextCellDelegate>
 @property (nonatomic, strong) UIImageView* backgroundImageView;
@@ -30,6 +31,16 @@
 @end
 
 @implementation ChatVC
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.viewModel = [[ChatViewModel alloc] init];
+        self.viewModel.delegate = self;
+        [WebSocketHelper connectWithPort:@"8080"];
+
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,11 +64,19 @@
     
     // 当视图即将消失时，取消所有正在进行的图片下载任务
     [[ImageCacheService sharedInstance] cancelAllLoadings];
+    
+    // 停止定时器
+    [self.viewModel stopEvaluationTimer];
 }
 
 - (void)dealloc {
     // 清理资源
     [[ImageCacheService sharedInstance] cancelAllLoadings];
+    [[ImageCacheService sharedInstance] clearCache];
+    [WebSocketHelper disconnect];
+    
+    // 停止定时器
+    [self.viewModel stopEvaluationTimer];
 }
 - (void)setupUI {
     _backgroundImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed: @"bg_chat_background"]];

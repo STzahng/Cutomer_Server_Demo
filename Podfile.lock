@@ -19,12 +19,14 @@ PODS:
     - LookinServer/Core (= 1.2.8)
   - LookinServer/Core (1.2.8)
   - Masonry (1.1.0)
+  - SocketRocket (0.7.1)
 
 DEPENDENCIES:
   - AFNetworking
   - HCSStarRatingView (~> 1.5)
   - LookinServer
   - Masonry
+  - SocketRocket
 
 SPEC REPOS:
   trunk:
@@ -32,13 +34,15 @@ SPEC REPOS:
     - HCSStarRatingView
     - LookinServer
     - Masonry
+    - SocketRocket
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   LookinServer: 1b2b61c6402ae29fa22182d48f5cd067b4e99e80
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
 
-PODFILE CHECKSUM: 8e4684d81f2c5153cd29c467c8cfc2bce1c099a5
+PODFILE CHECKSUM: 35c8b5800d0004d7b408df66ab5b6cc313414980
 
 COCOAPODS: 1.16.2
