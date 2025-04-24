@@ -33,6 +33,8 @@
 		2FE05D022DB7979D00238BE0 /* WebSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05D012DB7979D00238BE0 /* WebSocketManager.m */; };
 		2FE05D032DB7979D00238BE0 /* WebSocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05CFF2DB7979D00238BE0 /* WebSocketHelper.m */; };
 		2FE05D042DB7979D00238BE0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2FE05CFD2DB7979D00238BE0 /* README.md */; };
+		2FE05D0A2DB8D4D300238BE0 /* EmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05D092DB8D4D300238BE0 /* EmotionViewController.m */; };
+		2FE05D0D2DBA17A800238BE0 /* EmojiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05D0C2DBA17A800238BE0 /* EmojiManager.m */; };
 		2FF70FE42DB60A0700D8294C /* ImageCacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF70FE32DB60A0600D8294C /* ImageCacheService.m */; };
 		651E569165ECB7C1F7DA7F91 /* libPods-test1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C9C8B3F4460DA59F57C566 /* libPods-test1.0.a */; };
 /* End PBXBuildFile section */
@@ -89,6 +91,10 @@
 		2FE05CFF2DB7979D00238BE0 /* WebSocketHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebSocketHelper.m; sourceTree = "<group>"; };
 		2FE05D002DB7979D00238BE0 /* WebSocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebSocketManager.h; sourceTree = "<group>"; };
 		2FE05D012DB7979D00238BE0 /* WebSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebSocketManager.m; sourceTree = "<group>"; };
+		2FE05D082DB8D4D300238BE0 /* EmotionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmotionViewController.h; sourceTree = "<group>"; };
+		2FE05D092DB8D4D300238BE0 /* EmotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmotionViewController.m; sourceTree = "<group>"; };
+		2FE05D0B2DBA17A800238BE0 /* EmojiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojiManager.h; sourceTree = "<group>"; };
+		2FE05D0C2DBA17A800238BE0 /* EmojiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiManager.m; sourceTree = "<group>"; };
 		2FF70FE22DB60A0600D8294C /* ImageCacheService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCacheService.h; sourceTree = "<group>"; };
 		2FF70FE32DB60A0600D8294C /* ImageCacheService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCacheService.m; sourceTree = "<group>"; };
 		3052079DD16D610915C862E2 /* Pods-test1.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test1.0.debug.xcconfig"; path = "Target Support Files/Pods-test1.0/Pods-test1.0.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +197,8 @@
 		2FC0FC012D9E6AF10007E3AA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2FE05D0B2DBA17A800238BE0 /* EmojiManager.h */,
+				2FE05D0C2DBA17A800238BE0 /* EmojiManager.m */,
 				2FA4EE0F2DA524A100DCBB6C /* ChatViewModel.h */,
 				2FA4EE102DA524A100DCBB6C /* ChatViewModel.m */,
 			);
@@ -276,6 +284,8 @@
 		2FD3EF8B2D9BB916006D65D8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2FE05D082DB8D4D300238BE0 /* EmotionViewController.h */,
+				2FE05D092DB8D4D300238BE0 /* EmotionViewController.m */,
 				2FD3EF952D9BD359006D65D8 /* ChatVC.h */,
 				2FD3EF962D9BD359006D65D8 /* ChatVC.m */,
 			);
@@ -388,6 +398,7 @@
 				2F509A3B2DA3C8AC008621D4 /* OptionMessageCell.m in Sources */,
 				2FA0D1912DA8E2EE00370D61 /* NoticeAlertView.m in Sources */,
 				2FE05D022DB7979D00238BE0 /* WebSocketManager.m in Sources */,
+				2FE05D0D2DBA17A800238BE0 /* EmojiManager.m in Sources */,
 				2FE05D032DB7979D00238BE0 /* WebSocketHelper.m in Sources */,
 				2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */,
 				2F509A3E2DA4BFD2008621D4 /* RecommendView.m in Sources */,
@@ -397,6 +408,7 @@
 				2FA0D18C2DA7A0E000370D61 /* NoticeScrollView.m in Sources */,
 				2F526E1E2D9E2D5E00B5A26E /* ScreenScaling.m in Sources */,
 				2FA4EE142DA524E300DCBB6C /* ChatDataModel.m in Sources */,
+				2FE05D0A2DB8D4D300238BE0 /* EmotionViewController.m in Sources */,
 				2FD3EF942D9BB9AD006D65D8 /* RootController.m in Sources */,
 				2FC0FBAE2D9E62600007E3AA /* MessageToMeCell.m in Sources */,
 				2FDBBC5E2DA5218000D27C04 /* MessageModel.m in Sources */,

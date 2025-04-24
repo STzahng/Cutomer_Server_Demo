@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #define JSWidth(width) [[ScreenScaling sharedInstance] getWidth:width]
 #define JSHeight(height) [[ScreenScaling sharedInstance] getHeight:height]
+#define JSSafeWidth [[ScreenScaling sharedInstance] getSafeAreaWidth]
+#define JSSafeHeight [[ScreenScaling sharedInstance] getSafeAreaHeight]
 
 @interface ScreenScaling : NSObject
 
@@ -22,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 计算实际高度
 - (CGFloat)getHeight:(CGFloat)height;
+
+//返回当前屏幕安全区的宽度
+- (CGFloat)getSafeAreaWidth;
+
+//返回当前屏幕安全区的高度
+- (CGFloat)getSafeAreaHeight;
 
 @end
 

@@ -9,23 +9,23 @@
 @implementation WebSocketHelper
 
 + (void)connectWithPort:(NSString *)port {
-    [[WebSocketManager sharedManager] connectWithPort:port];
+    [[WebSocketManager sharedInstance] connectWithPort:port];
 }
 
 + (void)disconnect {
-    [[WebSocketManager sharedManager] disconnect];
+    [[WebSocketManager sharedInstance] disconnect];
 }
 
 + (void)sendTextMessage:(NSString *)message {
-    [[WebSocketManager sharedManager] sendMessage:message];
+    [[WebSocketManager sharedInstance] sendMessage:message];
 }
 
 + (void)sendDictionary:(NSDictionary *)dictionary {
-    [[WebSocketManager sharedManager] sendMessage:dictionary];
+    [[WebSocketManager sharedInstance] sendMessage:dictionary];
 }
 
 + (BOOL)isConnected {
-    return [[WebSocketManager sharedManager] isConnected];
+    return [[WebSocketManager sharedInstance] isConnected];
 }
 
 @end 

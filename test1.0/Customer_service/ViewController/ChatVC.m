@@ -20,14 +20,19 @@
 #import "ImageTextCell.h"
 #import "ImageCacheService.h"
 #import "WebSocketHelper.h"
+#import "EmotionViewController.h"
 
-@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate,UITextViewDelegate, KeywordsViewDelegate, BaseCellDelegate, ImageTextCellDelegate>
+@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate, UITextViewDelegate, KeywordsViewDelegate, BaseCellDelegate, ImageTextCellDelegate>
 @property (nonatomic, strong) UIImageView* backgroundImageView;
 @property (nonatomic, strong) TopBar *topBar;
 @property (nonatomic, strong) BottomBar *bottomBar;
 @property (nonatomic, strong) NoticeScrollView *noticeView;
 @property (nonatomic, strong) UITableView* tableView;
 @property (nonatomic, strong) KeywordsView *keywordsView;
+@property (nonatomic, strong) EmotionViewController *emotionViewController;
+@property (nonatomic, strong) UIView *emotionContainerView;
+@property (nonatomic, assign) BOOL isEmotionViewShowing;
+@property (nonatomic, assign) CGFloat emotionViewHeight;
 @end
 
 @implementation ChatVC
@@ -37,7 +42,7 @@
         self.viewModel = [[ChatViewModel alloc] init];
         self.viewModel.delegate = self;
         [WebSocketHelper connectWithPort:@"8080"];
-
+        _isEmotionViewShowing = NO;
     }
     return self;
 }
@@ -95,7 +100,7 @@
                                                  name:UITextViewTextDidChangeNotification
                                                object:_bottomBar.messageField];
     
-    [_bottomBar.emoticonButton addTarget:self action:@selector(sendEvaluateView) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomBar.emoticonButton addTarget:self action:@selector(toggleEmotionView) forControlEvents:UIControlEventTouchUpInside];
     [_bottomBar.pictureButton addTarget:self action:@selector(sendGradeView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: self.bottomBar];
     
@@ -126,6 +131,23 @@
     [_noticeView setNoticeTitles:titles contents:contents];
     // 开始自动滚动（每3秒切换一次）
     [_noticeView startAutoScrollWithInterval:3.0];
+    
+    // 创建表情控制器和容器视图
+    _emotionViewController = [[EmotionViewController alloc] init];
+    
+    // 创建容器视图，用于承载表情控制器视图
+    _emotionContainerView = [[UIView alloc] init];
+    _emotionContainerView.backgroundColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1.0];
+    _emotionContainerView.hidden = YES;
+    [self.view addSubview:_emotionContainerView];
+    
+    // 将表情控制器视图添加到容器
+    [self addChildViewController:_emotionViewController];
+    [_emotionContainerView addSubview:_emotionViewController.view];
+    [_emotionViewController didMoveToParentViewController:self];
+    
+    // 设置表情面板高度
+    _emotionViewHeight = [_emotionViewController emotionViewHeight];
 }
 
 - (void)setupConstraints {
@@ -165,6 +187,18 @@
         make.bottom.equalTo(_bottomBar.mas_top);
         make.left.right.equalTo(self.view);
     }];
+    
+    // 表情容器视图约束
+    [_emotionContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(@(_emotionViewHeight));
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(_emotionViewHeight); // 初始在屏幕外
+    }];
+    
+    // 表情控制器视图约束
+    [_emotionViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(_emotionContainerView);
+    }];
 }
 
 - (void)setupKeyboard {
@@ -181,18 +215,63 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
 }
-// 实现代理方法
 
-- (void)noticeScrollView:(NoticeScrollView *)scrollView didSelectNoticeAtIndex:(NSInteger)index {
-    NSString *title = scrollView.noticeTitles[index];
-    NSString *content = scrollView.noticeContents[index];
+#pragma mark - 表情面板相关方法
 
-    NoticeAlertView *alertView = [[NoticeAlertView alloc] initWithTitle:title notice:content];
-    __weak typeof(self) weakSelf = self;
-
-    [alertView showInView:weakSelf.view];
-    
+- (void)toggleEmotionView {
+    if (_isEmotionViewShowing) {
+        [self hideEmotionView];
+    } else {
+        // 如果键盘正在显示，先隐藏键盘
+        [self.view endEditing:YES];
+        [self showEmotionView];
+    }
 }
+
+- (void)showEmotionView {
+    _emotionContainerView.hidden = NO;
+    _isEmotionViewShowing = YES;
+    
+    // 更新底部输入框约束
+    [self.bottomBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(-_emotionViewHeight);
+    }];
+    
+    // 更新表情容器视图约束
+    [self.emotionContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+    }];
+    
+    // 执行动画
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)hideEmotionView {
+    _isEmotionViewShowing = NO;
+    
+    // 更新底部输入框约束
+    [self.bottomBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+    }];
+    
+    // 更新表情容器视图约束
+    [self.emotionContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(_emotionViewHeight);
+    }];
+    
+    // 执行动画
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        self->_emotionContainerView.hidden = YES;
+    }];
+}
+
+#pragma mark - EmotionViewControllerDelegate
+
+
 #pragma mark - UITextView Notification Handler
 
 - (void)textViewDidChange:(NSNotification *)notification {
@@ -229,10 +308,20 @@
     CGPoint location = [tapGesture locationInView: self.view];
     if (!CGRectContainsPoint(self.bottomBar.messageField.frame, location)){
         [self.view endEditing:YES];
+        
+//        // 如果表情视图正在显示，也隐藏它
+//        if (_isEmotionViewShowing) {
+//            [self hideEmotionView];
+//        }
     }
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification {{
+- (void)keyboardWillShow:(NSNotification *)notification {
+    // 如果表情视图正在显示，先隐藏表情视图
+    if (_isEmotionViewShowing) {
+        [self hideEmotionView];
+    }
+    
     // 获取键盘高度
     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGFloat keyboardHeight = keyboardFrame.size.height;
@@ -244,20 +333,25 @@
     }];
     
     // 调整内容区域滚动位置（如UITableView）
-    [UIView animateWithDuration:0.3 animations:^{{
+    [UIView animateWithDuration:0.3 animations:^{
         [self.view layoutIfNeeded];
         [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentSize.height  - keyboardHeight)];
-    }}];
-}}
+    }];
+}
  
-- (void)keyboardWillHide:(NSNotification *)notification {{
+- (void)keyboardWillHide:(NSNotification *)notification {
+    // 如果表情视图正在显示，不要重置底部输入框约束
+    if (_isEmotionViewShowing) {
+        return;
+    }
+    
     [self.bottomBar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(0);
     }];
-    [UIView animateWithDuration:0.3 animations:^{{
+    [UIView animateWithDuration:0.3 animations:^{
         [self.view layoutIfNeeded];
-    }}];
-}}
+    }];
+}
 
 - (void)sendButtonTapped {
     NSString *message = self.bottomBar.messageField.text;
@@ -430,6 +524,18 @@
 - (void)imageTextCell:(ImageTextCell *)cell withMessage:(MessageModel *)message;{
     NSLog(@"UI更新完成，通知代理");
     [self.viewModel handleMessageUpdated:message];
+}
+
+#pragma mark - NoticeScrollViewDelegate
+
+- (void)noticeScrollView:(NoticeScrollView *)scrollView didSelectNoticeAtIndex:(NSInteger)index {
+    NSString *title = scrollView.noticeTitles[index];
+    NSString *content = scrollView.noticeContents[index];
+
+    NoticeAlertView *alertView = [[NoticeAlertView alloc] initWithTitle:title notice:content];
+    __weak typeof(self) weakSelf = self;
+
+    [alertView showInView:weakSelf.view];
 }
 
 @end

@@ -2,6 +2,8 @@
 //  WebSocketManager.h
 //  test1.0
 //
+//  Created by heiqi on 2025/4/20
+//
 
 #import <Foundation/Foundation.h>
 
@@ -9,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WebSocketManager : NSObject
 
-+ (instancetype)sharedManager;
++ (instancetype)sharedInstance;
 
 /**
  * 连接WebSocket服务器

@@ -20,7 +20,7 @@
 - (void)sendMessage:(NSString *)content {
     MessageModel *message = [MessageModel messageWithContent:content type:MessageTypeUser];
     [self.dataModel addMessage:message];
-    [self resetEvaluationTimer];
+    //[self resetEvaluationTimer];
     
     [self notifyDelegate];
 }

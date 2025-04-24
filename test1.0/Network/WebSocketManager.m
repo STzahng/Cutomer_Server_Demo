@@ -2,6 +2,8 @@
 //  WebSocketManager.m
 //  test1.0
 //
+//  Created by heiqi on 2025/4/20
+//
 
 #import "WebSocketManager.h"
 #import <SocketRocket/SRWebSocket.h>
@@ -16,7 +18,7 @@
 
 @implementation WebSocketManager
 
-+ (instancetype)sharedManager {
++ (instancetype)sharedInstance {
     static WebSocketManager *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -195,6 +197,11 @@
             }
             
             NSLog(@"收到JSON消息结束 ================");
+            
+            // 发送通知，将解析后的JSON对象传递给监听者
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"WebSocketMessageReceived"
+                                                                object:nil
+                                                              userInfo:@{@"message": jsonObject}];
         } else {
             NSLog(@"收到非标准JSON对象: %@", jsonObject);
         }
