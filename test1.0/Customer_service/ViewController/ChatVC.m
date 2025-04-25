@@ -22,7 +22,7 @@
 #import "WebSocketHelper.h"
 #import "EmotionViewController.h"
 
-@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate, UITextViewDelegate, KeywordsViewDelegate, BaseCellDelegate, ImageTextCellDelegate>
+@interface ChatVC ()<TopBarDelegate, UITableViewDelegate, UITableViewDataSource, OptionMessageCellDelegate, NoticeScrollViewDelegate, UITextViewDelegate, KeywordsViewDelegate, BaseCellDelegate, ImageTextCellDelegate, EmotionViewDelegate>
 @property (nonatomic, strong) UIImageView* backgroundImageView;
 @property (nonatomic, strong) TopBar *topBar;
 @property (nonatomic, strong) BottomBar *bottomBar;
@@ -134,11 +134,13 @@
     
     // 创建表情控制器和容器视图
     _emotionViewController = [[EmotionViewController alloc] init];
+    _emotionViewController.delegate = self; // 设置代理为当前控制器
     
     // 创建容器视图，用于承载表情控制器视图
     _emotionContainerView = [[UIView alloc] init];
     _emotionContainerView.backgroundColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1.0];
     _emotionContainerView.hidden = YES;
+    _emotionContainerView.userInteractionEnabled = YES; // 设置可点击
     [self.view addSubview:_emotionContainerView];
     
     // 将表情控制器视图添加到容器
@@ -267,6 +269,13 @@
     } completion:^(BOOL finished) {
         self->_emotionContainerView.hidden = YES;
     }];
+}
+
+#pragma mark - EmotionViewDelegate
+
+// 处理选中的表情图片
+- (void)didSelectEmojiWithInfo:(UIImage *)emojiImage {
+    
 }
 
 #pragma mark - EmotionViewControllerDelegate

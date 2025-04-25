@@ -85,10 +85,10 @@
     }
     
     if (jsonString) {
-        NSLog(@"WebSocket发送消息: %@", jsonString);
+        //NSLog(@"WebSocket发送消息: %@", jsonString);
         [self.webSocket send:jsonString];
     } else {
-        NSLog(@"WebSocket发送消息失败: 无效的消息格式");
+        //NSLog(@"WebSocket发送消息失败: 无效的消息格式");
     }
 }
 
@@ -100,13 +100,13 @@
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket {
     self.isConnecting = NO;
-    NSLog(@"WebSocket连接成功: %@", self.urlString);
+    //NSLog(@"WebSocket连接成功: %@", self.urlString);
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
     self.isConnecting = NO;
     self.webSocket = nil;
-    NSLog(@"WebSocket连接失败: %@", error.localizedDescription);
+    //NSLog(@"WebSocket连接失败: %@", error.localizedDescription);
     
     // 可以在这里添加重连逻辑
     // [self reconnect];
@@ -115,11 +115,11 @@
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
     // 先打印原始消息长度，便于调试
     if ([message isKindOfClass:[NSString class]]) {
-        NSLog(@"收到WebSocket原始字符串消息，长度: %lu", (unsigned long)[(NSString *)message length]);
+        //NSLog(@"收到WebSocket原始字符串消息，长度: %lu", (unsigned long)[(NSString *)message length]);
     } else if ([message isKindOfClass:[NSData class]]) {
-        NSLog(@"收到WebSocket原始数据消息，长度: %lu bytes", (unsigned long)[(NSData *)message length]);
+        //NSLog(@"收到WebSocket原始数据消息，长度: %lu bytes", (unsigned long)[(NSData *)message length]);
     } else {
-        NSLog(@"收到WebSocket未知类型消息: %@", [message class]);
+        //NSLog(@"收到WebSocket未知类型消息: %@", [message class]);
     }
     
     // 转换为NSData进行处理
@@ -147,12 +147,12 @@
         // 尝试将数据直接转换为字符串
         NSString *rawString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         if (rawString) {
-            NSLog(@"数据转字符串: %@", rawString);
+            //NSLog(@"数据转字符串: %@", rawString);
         } else {
-            NSLog(@"数据无法转换为UTF-8字符串");
+            //NSLog(@"数据无法转换为UTF-8字符串");
         }
     } else {
-        NSLog(@"未知消息类型，无法处理");
+        //NSLog(@"未知消息类型，无法处理");
         return;
     }
     
@@ -162,14 +162,14 @@
                                                    options:kNilOptions
                                                      error:&jsonError];
     if (jsonError) {
-        NSLog(@"JSON解析失败 - 错误: %@", jsonError.localizedDescription);
+        //NSLog(@"JSON解析失败 - 错误: %@", jsonError.localizedDescription);
         // 尝试以不同编码方式解析
         NSArray *encodings = @[@(NSUTF8StringEncoding), @(NSASCIIStringEncoding), @(NSISOLatin1StringEncoding)];
         for (NSNumber *encoding in encodings) {
             NSStringEncoding enc = [encoding unsignedIntegerValue];
             NSString *encodedString = [[NSString alloc] initWithData:jsonData encoding:enc];
             if (encodedString) {
-                NSLog(@"使用编码 %lu 解析: %@", (unsigned long)enc, encodedString);
+                //NSLog(@"使用编码 %lu 解析: %@", (unsigned long)enc, encodedString);
                 break;
             }
         }
@@ -182,7 +182,7 @@
             NSString *prettyString = [[NSString alloc] initWithData:prettyData encoding:NSUTF8StringEncoding];
             
             // 将JSON分段打印，避免被截断
-            NSLog(@"收到JSON消息开始 ================");
+            //NSLog(@"收到JSON消息开始 ================");
             
             // 分段输出，每次最多输出1000个字符
             NSUInteger length = [prettyString length];
@@ -196,14 +196,14 @@
                 offset += thisChunkSize;
             }
             
-            NSLog(@"收到JSON消息结束 ================");
+            //NSLog(@"收到JSON消息结束 ================");
             
             // 发送通知，将解析后的JSON对象传递给监听者
             [[NSNotificationCenter defaultCenter] postNotificationName:@"WebSocketMessageReceived"
                                                                 object:nil
                                                               userInfo:@{@"message": jsonObject}];
         } else {
-            NSLog(@"收到非标准JSON对象: %@", jsonObject);
+            //NSLog(@"收到非标准JSON对象: %@", jsonObject);
         }
     }
 }
@@ -211,14 +211,28 @@
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
     self.isConnecting = NO;
     self.webSocket = nil;
-    NSLog(@"WebSocket已关闭, code: %ld, reason: %@, wasClean: %d", (long)code, reason, wasClean);
+    //NSLog(@"WebSocket已关闭, code: %ld, reason: %@, wasClean: %d", (long)code, reason, wasClean);
     
     // 可以在这里添加重连逻辑
     // [self reconnect];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload {
-    NSLog(@"WebSocket收到pong响应");
+    //NSLog(@"WebSocket收到pong响应");
 }
 
 @end 
+
+//{
+//    "method" : "setChatResources"
+//    "params" :{
+//        {
+//            "res_url":""
+//            "avatar_res_url":""
+//            "emoji_groups":[EmojiGroup] // 不设置则不显示
+//            "share_msg_groups" : [ShareMsgGroup]
+//        }
+//        
+//    }
+//    
+//}
