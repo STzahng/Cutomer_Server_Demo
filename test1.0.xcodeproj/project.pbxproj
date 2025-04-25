@@ -34,7 +34,6 @@
 		2FE05D032DB7979D00238BE0 /* WebSocketHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05CFF2DB7979D00238BE0 /* WebSocketHelper.m */; };
 		2FE05D042DB7979D00238BE0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2FE05CFD2DB7979D00238BE0 /* README.md */; };
 		2FE05D0A2DB8D4D300238BE0 /* EmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05D092DB8D4D300238BE0 /* EmotionViewController.m */; };
-		2FE05D0D2DBA17A800238BE0 /* EmojiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05D0C2DBA17A800238BE0 /* EmojiManager.m */; };
 		2FE05D102DBA2CFA00238BE0 /* EmojiViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05D0F2DBA2CFA00238BE0 /* EmojiViewModel.m */; };
 		2FF70FE42DB60A0700D8294C /* ImageCacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF70FE32DB60A0600D8294C /* ImageCacheService.m */; };
 		651E569165ECB7C1F7DA7F91 /* libPods-test1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C9C8B3F4460DA59F57C566 /* libPods-test1.0.a */; };
@@ -94,8 +93,6 @@
 		2FE05D012DB7979D00238BE0 /* WebSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebSocketManager.m; sourceTree = "<group>"; };
 		2FE05D082DB8D4D300238BE0 /* EmotionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmotionViewController.h; sourceTree = "<group>"; };
 		2FE05D092DB8D4D300238BE0 /* EmotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmotionViewController.m; sourceTree = "<group>"; };
-		2FE05D0B2DBA17A800238BE0 /* EmojiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojiManager.h; sourceTree = "<group>"; };
-		2FE05D0C2DBA17A800238BE0 /* EmojiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiManager.m; sourceTree = "<group>"; };
 		2FE05D0E2DBA2CFA00238BE0 /* EmojiViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojiViewModel.h; sourceTree = "<group>"; };
 		2FE05D0F2DBA2CFA00238BE0 /* EmojiViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiViewModel.m; sourceTree = "<group>"; };
 		2FF70FE22DB60A0600D8294C /* ImageCacheService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCacheService.h; sourceTree = "<group>"; };
@@ -200,8 +197,6 @@
 		2FC0FC012D9E6AF10007E3AA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2FE05D0B2DBA17A800238BE0 /* EmojiManager.h */,
-				2FE05D0C2DBA17A800238BE0 /* EmojiManager.m */,
 				2FA4EE0F2DA524A100DCBB6C /* ChatViewModel.h */,
 				2FA4EE102DA524A100DCBB6C /* ChatViewModel.m */,
 				2FE05D0E2DBA2CFA00238BE0 /* EmojiViewModel.h */,
@@ -404,7 +399,6 @@
 				2FA0D1912DA8E2EE00370D61 /* NoticeAlertView.m in Sources */,
 				2FE05D022DB7979D00238BE0 /* WebSocketManager.m in Sources */,
 				2FE05D102DBA2CFA00238BE0 /* EmojiViewModel.m in Sources */,
-				2FE05D0D2DBA17A800238BE0 /* EmojiManager.m in Sources */,
 				2FE05D032DB7979D00238BE0 /* WebSocketHelper.m in Sources */,
 				2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */,
 				2F509A3E2DA4BFD2008621D4 /* RecommendView.m in Sources */,

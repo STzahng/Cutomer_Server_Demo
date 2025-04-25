@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol EmotionViewDelegate <NSObject>
 // 当选择表情图片时调用
-- (void)didSelectEmojiWithInfo:(UIImage *)emojiInfo;
+- (void)didSelectEmojiWithInfo:(NSString *)emojiInfo;
 @end
 
 @interface EmotionViewController : UICollectionViewController

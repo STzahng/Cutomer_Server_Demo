@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
  * 发送消息
  * @param message 要发送的消息
  */
-- (void)sendMessage:(id)message;
+- (void)sendNetWorkMessage:(id)message;
 
 /**
  * 当前连接状态

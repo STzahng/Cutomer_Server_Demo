@@ -274,8 +274,38 @@
 #pragma mark - EmotionViewDelegate
 
 // 处理选中的表情图片
-- (void)didSelectEmojiWithInfo:(UIImage *)emojiImage {
+- (void)didSelectEmojiWithInfo:(NSString* )emojiImage {
+    // 获取当前输入框
+    UITextView *textView = self.bottomBar.messageField;
     
+    // 获取当前光标位置
+    NSRange selectedRange = textView.selectedRange;
+    
+    // 获取当前文本
+    NSString *currentText = textView.text ?: @"";
+    
+    // 在光标位置插入表情信息
+    NSString *textBeforeCursor = [currentText substringToIndex:MIN(selectedRange.location, currentText.length)];
+    NSString *textAfterCursor = selectedRange.location < currentText.length ? 
+                               [currentText substringFromIndex:selectedRange.location] : @"";
+    
+    // 组合新文本
+    NSString *newText = [NSString stringWithFormat:@"%@%@%@", textBeforeCursor, emojiImage, textAfterCursor];
+    
+    // 直接设置文本，模拟键盘输入
+    textView.text = newText;
+    
+    // 更新光标位置到插入表情后的位置
+    NSInteger newCursorPosition = selectedRange.location + [emojiImage length];
+    if (newCursorPosition <= newText.length) {
+        textView.selectedRange = NSMakeRange(newCursorPosition, 0);
+    } else {
+        textView.selectedRange = NSMakeRange(newText.length, 0);
+    }
+    
+    // 手动触发textViewDidChange通知，确保代理方法被调用
+    [[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification 
+                                                        object:textView];
 }
 
 #pragma mark - EmotionViewControllerDelegate

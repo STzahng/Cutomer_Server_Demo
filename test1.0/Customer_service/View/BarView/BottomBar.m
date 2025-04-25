@@ -7,6 +7,7 @@
 
 #import "BottomBar.h"
 #import "ScreenScaling.h"
+#import "EmojiViewModel.h"
 
 @implementation BottomBar
 
@@ -33,11 +34,13 @@
     _messageField.font = [UIFont systemFontOfSize: 17];
     _messageField.scrollEnabled = NO;
     _messageField.textContainerInset = UIEdgeInsetsMake(JSWidth(20), JSWidth(15), JSWidth(8), JSWidth(15));
+    
     // 添加文本变化通知
     [[NSNotificationCenter defaultCenter] addObserver:self
                                             selector:@selector(textViewDidChange:)
                                                 name:UITextViewTextDidChangeNotification
                                               object:_messageField];
+    
     [self addSubview: _messageField];
     
     _emoticonButton = [[UIButton alloc] init];
@@ -54,10 +57,8 @@
     [_sendButton setImage: [UIImage imageNamed: @"btn_chat_send"] forState: UIControlStateNormal];
     [_sendButton addTarget: self action: @selector(sendButtonDidClick:) forControlEvents: UIControlEventTouchUpInside];
     [self addSubview: _sendButton];
-    
-    
-   
 }
+
 - (void)setupConstraints {
     [_backgroundImageView mas_makeConstraints:^(MASConstraintMaker* make){
         make.edges.equalTo(self);
@@ -67,7 +68,6 @@
         make.left.equalTo(@(JSWidth(25)));
         make.right.equalTo(_emoticonButton.mas_left).inset(JSWidth(35));
         make.top.bottom.equalTo(self).inset(JSHeight(30));
-       // make.height.equalTo(@(JSHeight(85)));
     }];
     
     [_emoticonButton mas_makeConstraints:^(MASConstraintMaker* make){
@@ -87,15 +87,17 @@
         make.bottom.equalTo(self).inset(JSHeight(30));
         make.width.height.equalTo(@(JSHeight(85)));
     }];
-    
 }
+
 #pragma mark - Actions
 - (void)emoticonButtonDidClick:(UIButton*)sender{
     NSLog(@"emoticonButton clicked");
 }
+
 - (void)pictrueButtonDidClick:(UIButton*)sender{
     NSLog(@"pictureButton clicked");
 }
+
 - (void)sendButtonDidClick:(UIButton*)sender{
     NSLog(@"sendButton clicked");
     [self mas_updateConstraints:^(MASConstraintMaker *make){
@@ -106,6 +108,7 @@
         make.height.equalTo(@(JSHeight(85)));
     }];
 }
+
 #pragma mark - UITextViewDelegate
 
 - (void)textViewDidChange:(NSNotification *)notification {
@@ -125,7 +128,6 @@
     }];
     
     [textView mas_updateConstraints:^(MASConstraintMaker *make){
-        //make.top.bottom.equalTo(self).inset(JSHeight(30));
         make.height.equalTo(@(newHeight));
     }];
     

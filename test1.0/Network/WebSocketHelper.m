@@ -17,11 +17,11 @@
 }
 
 + (void)sendTextMessage:(NSString *)message {
-    [[WebSocketManager sharedInstance] sendMessage:message];
+    [[WebSocketManager sharedInstance] sendNetWorkMessage:message];
 }
 
 + (void)sendDictionary:(NSDictionary *)dictionary {
-    [[WebSocketManager sharedInstance] sendMessage:dictionary];
+    [[WebSocketManager sharedInstance] sendNetWorkMessage:dictionary];
 }
 
 + (BOOL)isConnected {

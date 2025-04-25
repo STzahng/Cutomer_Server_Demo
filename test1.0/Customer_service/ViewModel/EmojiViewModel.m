@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSString *resourceBaseURL;
 @property (nonatomic, copy) NSString *avatarResourceBaseURL;
 @property (nonatomic, strong) NSMutableDictionary *downloadedImages;
+@property (nonatomic, strong) NSMutableSet *downloadedImages_ID;
 @property (nonatomic, strong) NSOperationQueue *downloadQueue;
 @property (nonatomic, assign) NSInteger totalDownloads;
 @property (nonatomic, assign) NSInteger completedDownloads;
@@ -135,7 +136,7 @@
                 NSMutableDictionary *emoji = [NSMutableDictionary dictionary];
                 emoji[@"id"] = emojiDict[@"id"];
                 emoji[@"img"] = emojiDict[@"img"];
-                
+                //_downloadedImages_ID[@"id"] = emojiDict[@"img"];
                 // 构建完整的图片URL
                 if (self.resourceBaseURL.length > 0 && [emoji[@"img"] isKindOfClass:[NSString class]]) {
                     NSString *fullURL = [self fullURLForEmojiImage:emoji[@"img"]];
@@ -390,53 +391,6 @@
     return [self.emojiGroupsArray copy];
 }
 
-#pragma mark - 测试方法
 
-- (void)testWithSampleData {
-    // 创建示例数据进行测试
-    NSDictionary *sampleData = @{
-        @"method": @"setChatResources",
-        @"params": @{
-            @"res_url": @"https://cdn.example.com/emoji/",
-            @"avatar_res_url": @"https://cdn.example.com/avatar/",
-            @"emoji_groups": @[
-                @{
-                    @"id": @1,
-                    @"icon": @"img_chat_expression_emoji.png",
-                    @"emojis": @[
-                        @{@"id": @1, @"img": @"u1f60a.png"},
-                        @{@"id": @2, @"img": @"u1f60b.png"},
-                        @{@"id": @3, @"img": @"u1f60c.png"},
-                        @{@"id": @4, @"img": @"u1f60d.png"},
-                        @{@"id": @5, @"img": @"u1f60e.png"},
-                        @{@"id": @6, @"img": @"u1f60f.png"},
-                        @{@"id": @7, @"img": @"u1f61a.png"}
-                    ]
-                }
-            ]
-        }
-    };
-    
-    // 解析数据
-    [self parseEmojiDataFromMessage:sampleData];
-    
-    // 输出结果
-    NSLog(@"测试结果 - 总共解析到 %lu 个emoji组", (unsigned long)self.emojiGroupsArray.count);
-    for (NSDictionary *group in self.emojiGroupsArray) {
-        NSInteger groupId = [group[@"id"] integerValue];
-        NSString *icon = group[@"icon"];
-        NSArray *emojis = group[@"emojis"];
-        
-        NSLog(@"组ID: %ld, 图标: %@, 表情数量: %lu", 
-              (long)groupId, icon, (unsigned long)emojis.count);
-        
-        // 输出前3个表情的完整URL
-        for (int i = 0; i < MIN(3, emojis.count); i++) {
-            NSDictionary *emoji = emojis[i];
-            NSLog(@"Emoji #%d: ID=%@, 图片=%@, 完整URL=%@", 
-                  i+1, emoji[@"id"], emoji[@"img"], emoji[@"full_url"]);
-        }
-    }
-}
 
 @end 

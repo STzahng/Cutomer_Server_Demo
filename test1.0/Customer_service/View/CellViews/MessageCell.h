@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MessageCell : UITableViewCell
 
+@property (nonatomic, strong, readonly) UITextView *messageTextView;
+
 - (void)configureWithMessage:(MessageModel *)message;
 
 @end

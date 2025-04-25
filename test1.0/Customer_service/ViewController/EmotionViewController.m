@@ -141,14 +141,7 @@
     
     id emojiItem = self.emojiData[indexPath.item];
     
-    if ([emojiItem isKindOfClass:[NSString class]]) {
-        // 显示字符串表情
-        UILabel *emojiLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-        emojiLabel.textAlignment = NSTextAlignmentCenter;
-        emojiLabel.font = [UIFont systemFontOfSize:20]; // 设置表情大小
-        emojiLabel.text = (NSString *)emojiItem;
-        [cell.contentView addSubview:emojiLabel];
-    } else if ([emojiItem isKindOfClass:[NSDictionary class]]) {
+    if ([emojiItem isKindOfClass:[NSDictionary class]]) {
         // 显示从ViewModel获取的表情
         NSDictionary *emoji = (NSDictionary *)emojiItem;
         
@@ -168,12 +161,6 @@
         } else {
             // 图片未下载，显示占位图
             imageView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.3];
-            
-//            // 可选：在这里添加加载指示器
-//            UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
-//            activityIndicator.center = CGPointMake(imageView.bounds.size.width / 2, imageView.bounds.size.height / 2);
-//            [activityIndicator startAnimating];
-//            [imageView addSubview:activityIndicator];
         }
         
         [cell.contentView addSubview:imageView];
@@ -199,10 +186,11 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     } else if ([selectedEmoji isKindOfClass:[NSDictionary class]]) {
         NSDictionary *emoji = (NSDictionary *)selectedEmoji;
         NSLog(@"选中表情: ID=%@, 图片=%@", emoji[@"id"], emoji[@"img"]);
-        UIImage *emojiImage = [self.emojiViewModel imageForEmojiWithName:emoji[@"img"]];
-        // 调用代理方法，将图片表情信息传递给控制器
+        // 获取表情ID
+        NSString *emojiPlaceholder = [NSString stringWithFormat:@"[#%@]", emoji[@"id"]];
+        // 调用代理方法，将表情占位符传递给控制器
         if ([self.delegate respondsToSelector:@selector(didSelectEmojiWithInfo:)]) {
-            [self.delegate didSelectEmojiWithInfo:emojiImage];
+            [self.delegate didSelectEmojiWithInfo:emojiPlaceholder];
         }
     }
     

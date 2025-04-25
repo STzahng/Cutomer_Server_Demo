@@ -67,7 +67,7 @@
     }
 }
 
-- (void)sendMessage:(id)message {
+- (void)sendNetWorkMessage:(id)message {
     if (![self isConnected]) {
         NSLog(@"WebSocket未连接，无法发送消息");
         return;
@@ -85,10 +85,10 @@
     }
     
     if (jsonString) {
-        //NSLog(@"WebSocket发送消息: %@", jsonString);
+        NSLog(@"WebSocket发送消息: %@", jsonString);
         [self.webSocket send:jsonString];
     } else {
-        //NSLog(@"WebSocket发送消息失败: 无效的消息格式");
+        NSLog(@"WebSocket发送消息失败: 无效的消息格式");
     }
 }
 
@@ -100,16 +100,14 @@
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket {
     self.isConnecting = NO;
-    //NSLog(@"WebSocket连接成功: %@", self.urlString);
+    NSLog(@"WebSocket连接成功: %@", self.urlString);
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
     self.isConnecting = NO;
     self.webSocket = nil;
-    //NSLog(@"WebSocket连接失败: %@", error.localizedDescription);
-    
-    // 可以在这里添加重连逻辑
-    // [self reconnect];
+    NSLog(@"WebSocket连接失败: %@", error.localizedDescription);
+
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
