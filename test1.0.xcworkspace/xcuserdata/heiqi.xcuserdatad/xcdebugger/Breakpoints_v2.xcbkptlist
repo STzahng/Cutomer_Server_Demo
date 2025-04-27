@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E2DC7B0D-B0BE-4E81-9D3C-136A50F863A9"
+            uuid = "EA5BE9A0-193E-4787-91A5-D3586666DFC7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "test1.0/Customer_service/ViewController/ChatVC.m"
+            filePath = "test1.0/Customer_service/View/CellViews/MessageCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "-didSelectEmojiWithInfo:"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-configureWithMessage:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

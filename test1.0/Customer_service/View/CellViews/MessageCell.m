@@ -95,8 +95,8 @@
         return;
     }
     // 保存当前样式属性
-    UIFont *currentFont = _messageTextView.font ?: [UIFont systemFontOfSize:16];
-    UIColor *currentTextColor = _messageTextView.textColor ?: [UIColor whiteColor];
+    UIFont *currentFont = [UIFont systemFontOfSize:16];
+    UIColor *currentTextColor = [UIColor whiteColor];
     
     // 创建富文本
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:content];
@@ -136,24 +136,19 @@
             }
             
             if (emojiImage) {
-                // 调整表情图片大小
-                CGFloat textHeight = _messageTextView.font.lineHeight;
-                CGFloat emojiSize = textHeight * 1.2;
-                
-                // 按比例缩放图片
-                CGFloat scale = emojiSize / MAX(emojiImage.size.width, emojiImage.size.height);
-                CGSize newSize = CGSizeMake(emojiImage.size.width * scale, emojiImage.size.height * scale);
+                // 直接使用固定大小
+                CGFloat emojiSize = JSHeight(55);
                 
                 // 绘制调整大小后的图片
-                UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-                [emojiImage drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+                UIGraphicsBeginImageContextWithOptions(CGSizeMake(emojiSize, emojiSize), NO, 0.0);
+                [emojiImage drawInRect:CGRectMake(0, 0, emojiSize, emojiSize)];
                 UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
                 UIGraphicsEndImageContext();
                 
                 // 创建表情图片附件
                 NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
                 attachment.image = resizedImage;
-                attachment.bounds = CGRectMake(0, -4, newSize.width, newSize.height); // -4调整垂直位置
+                attachment.bounds = CGRectMake(0, -4, emojiSize, emojiSize); // -4调整垂直位置
                 
                 // 创建带附件的属性字符串
                 NSAttributedString *emojiAttributedString = [NSAttributedString attributedStringWithAttachment:attachment];

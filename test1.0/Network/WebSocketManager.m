@@ -47,7 +47,7 @@
     self.isConnecting = YES;
     
     // 构建WebSocket URL
-    self.urlString = [NSString stringWithFormat:@"ws://192.168.91.114:3001/chat/%@", port];
+    self.urlString = [NSString stringWithFormat:@"ws://192.168.94.168:3001/chat/%@", port];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]];
     
     self.webSocket = [[SRWebSocket alloc] initWithURLRequest:request];

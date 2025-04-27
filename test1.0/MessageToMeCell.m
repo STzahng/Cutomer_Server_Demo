@@ -12,12 +12,12 @@
 
 @property (nonatomic, strong) UIImageView *headpic;
 @property (nonatomic, strong) UILabel *nameLabel;
-@property (nonatomic, strong) UILabel *messageLabel;
+@property (nonatomic, strong) UITextView *messageLabel;
 @property (nonatomic, strong) UIImageView *bubbleImage;
 @property (nonatomic, strong) UIButton *translatedButton;
 @property (nonatomic, strong) UIImageView *translatedLine;
 @property (nonatomic, strong) UILabel *translatedMessage;
-
+@property (nonatomic, assign) NSString *rawText;
 @property (nonatomic, assign) BOOL isTranslated; // 添加标记是否已翻译
 
 
@@ -52,10 +52,12 @@
     UIEdgeInsets insets = UIEdgeInsetsMake(28, 15, 7, 10);
     _bubbleImage.image = [bubbleImage resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
     
-    _messageLabel = [[UILabel alloc] init];
-    _messageLabel.numberOfLines = 0;
-    _messageLabel.text = @"Are you ready OK？";
-    _messageLabel.font = [UIFont systemFontOfSize:16];
+    _messageLabel = [[UITextView alloc] init];
+    _messageLabel.editable = NO;
+    _messageLabel.scrollEnabled = NO;
+    _messageLabel.backgroundColor = [UIColor clearColor];
+    _messageLabel.textAlignment = NSTextAlignmentLeft;
+    _messageLabel.font = [UIFont systemFontOfSize: 16];
     _messageLabel.textColor = [UIColor whiteColor];
 
     _translatedButton = [[UIButton alloc] init];
@@ -121,8 +123,8 @@
 }
 
 - (void)configureWithMessage:(MessageModel *)message {
-    _messageLabel.text = message.content;
-    
+    _rawText = message.content;
+    [self handelMessage];
     // 先重置状态
     [self resetTranslationState];
     
@@ -130,6 +132,71 @@
     if (message.isTranslated) {
         [self showTranslation];
     }
+}
+
+//处理网址类型文字实现超链接
+- (void)handelMessage{
+    NSString *content = _rawText ?: @"";
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"@([^:]+):\\\"(.*?)\\\"" options:0 error:nil];
+    NSArray *matches = [regex matchesInString:content options:0 range:NSMakeRange(0, content.length)];
+
+    if(matches.count == 0){
+        _messageLabel.text = content;
+        return;
+    }
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:content];
+    
+    [attributedString addAttribute:NSFontAttributeName 
+                             value:[UIFont systemFontOfSize:16] 
+                             range:NSMakeRange(0, content.length)];
+    [attributedString addAttribute:NSForegroundColorAttributeName 
+                             value:[UIColor whiteColor] 
+                             range:NSMakeRange(0, content.length)];
+    
+    for (NSTextCheckingResult *match in [matches reverseObjectEnumerator]) {
+        NSRange fullMatchRange = match.range;
+
+        NSRange keyRange = [match rangeAtIndex:1];
+        NSString *key = [content substringWithRange:keyRange];
+
+        NSRange valueRange = [match rangeAtIndex:2];
+        NSString *url = [content substringWithRange:valueRange];
+        
+        NSString *replacementText = [@"@" stringByAppendingString:key];
+        NSMutableAttributedString *linkString = [[NSMutableAttributedString alloc] initWithString:replacementText];
+
+        [linkString addAttribute:NSFontAttributeName 
+                          value:[UIFont systemFontOfSize:16]
+                          range:NSMakeRange(0, replacementText.length)];
+        [linkString addAttribute:NSForegroundColorAttributeName 
+                          value:[UIColor yellowColor] 
+                          range:NSMakeRange(0, replacementText.length)];
+        
+ 
+        [linkString addAttribute:NSLinkAttributeName
+                          value:[NSURL URLWithString:url] 
+                          range:NSMakeRange(0, replacementText.length)];
+
+        [attributedString replaceCharactersInRange:fullMatchRange withAttributedString:linkString];
+    }
+    
+    _messageLabel.attributedText = attributedString;
+    
+    _messageLabel.linkTextAttributes = @{
+        NSForegroundColorAttributeName: [UIColor yellowColor],
+        NSUnderlineStyleAttributeName: @(NSUnderlineStyleNone)
+    };
+
+    _messageLabel.delegate = self;
+}
+
+// UITextViewDelegate方法
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
+    if ([[UIApplication sharedApplication] canOpenURL:URL]) {
+        [[UIApplication sharedApplication] openURL:URL options:@{} completionHandler:nil];
+    }
+    return NO;
 }
 
 // 重置翻译状态的辅助方法
