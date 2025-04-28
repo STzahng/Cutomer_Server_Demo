@@ -8,8 +8,9 @@
 #import "ImageTextCell.h"
 #import "ScreenScaling.h"
 #import "ImageCacheService.h"
+#import "ShowImageFullVC.h"
 
-@interface ImageTextCell ()
+@interface ImageTextCell ()<UITextViewDelegate>
 
 @property (nonatomic, strong) UIImageView *headpic;
 @property (nonatomic, strong) UILabel *nameLabel;
@@ -24,6 +25,8 @@
 @property (nonatomic, strong) NSMutableDictionary<NSString *, UIImage *> *loadedImages;
 // 加载失败的图片URL
 @property (nonatomic, strong) NSMutableSet<NSString *> *failedImageURLs;
+// 记录加载图片附件信息
+@property (nonatomic, strong) NSMutableArray<NSTextAttachment *> *imageAttachments;
 
 @end
 
@@ -34,6 +37,7 @@
         _pendingImageURLs = [NSMutableSet set];
         _loadedImages = [NSMutableDictionary dictionary];
         _failedImageURLs = [NSMutableSet set];
+        _imageAttachments = [NSMutableArray array];
         [self setupUI];
         [self setupConstraints];
         
@@ -97,7 +101,9 @@
     _messageTextView.scrollEnabled = NO;
     _messageTextView.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
     _messageTextView.textContainer.lineFragmentPadding = 0;
-
+    _messageTextView.userInteractionEnabled  = YES;
+    _messageTextView.delegate = self;
+    //_messageTextView.editable  = YES;
     
     [self.contentView addSubview:_bubbleImage];
     [self.contentView addSubview:_messageTextView];
@@ -250,8 +256,21 @@
     }
 }
 
-#pragma mark - ImageLoadDelegate
-
+#pragma mark - UITextViewDelegate
+- (BOOL)textView:(UITextView *)textView shouldInteractWithTextAttachment:(NSTextAttachment *)textAttachment inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction {
+    if (_imageAttachments.count == 0){
+        return NO;
+    }else{
+        NSInteger index = [_imageAttachments indexOfObject:textAttachment];
+        NSTextAttachment *attachment = _imageAttachments[index];
+        if (attachment.image) {
+            ShowImageFullVC *imageVC = [[ShowImageFullVC alloc]initWithImage:attachment.image];
+            imageVC.modalPresentationStyle = UIModalPresentationFullScreen;
+            [self.delegate imageDidPresent:imageVC];
+        }
+    }
+    return NO;
+}
 
 
 #pragma mark - 私有方法
@@ -337,6 +356,7 @@
                 NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
                 attachment.image = loadedImage;
                 attachment.bounds = CGRectMake(0, 0, displayWidth, displayHeight);
+                [_imageAttachments addObject:attachment];
                 
                 NSAttributedString *imageString = [NSAttributedString attributedStringWithAttachment:attachment];
                 [finalText appendAttributedString:imageString];

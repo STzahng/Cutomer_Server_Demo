@@ -35,6 +35,7 @@
 		2FE05D042DB7979D00238BE0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2FE05CFD2DB7979D00238BE0 /* README.md */; };
 		2FE05D0A2DB8D4D300238BE0 /* EmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05D092DB8D4D300238BE0 /* EmotionViewController.m */; };
 		2FE05D102DBA2CFA00238BE0 /* EmojiViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05D0F2DBA2CFA00238BE0 /* EmojiViewModel.m */; };
+		2FE05D132DBF632900238BE0 /* ShowImageFullVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE05D122DBF632900238BE0 /* ShowImageFullVC.m */; };
 		2FF70FE42DB60A0700D8294C /* ImageCacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF70FE32DB60A0600D8294C /* ImageCacheService.m */; };
 		651E569165ECB7C1F7DA7F91 /* libPods-test1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C9C8B3F4460DA59F57C566 /* libPods-test1.0.a */; };
 /* End PBXBuildFile section */
@@ -95,6 +96,8 @@
 		2FE05D092DB8D4D300238BE0 /* EmotionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmotionViewController.m; sourceTree = "<group>"; };
 		2FE05D0E2DBA2CFA00238BE0 /* EmojiViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojiViewModel.h; sourceTree = "<group>"; };
 		2FE05D0F2DBA2CFA00238BE0 /* EmojiViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiViewModel.m; sourceTree = "<group>"; };
+		2FE05D112DBF632900238BE0 /* ShowImageFullVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowImageFullVC.h; sourceTree = "<group>"; };
+		2FE05D122DBF632900238BE0 /* ShowImageFullVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowImageFullVC.m; sourceTree = "<group>"; };
 		2FF70FE22DB60A0600D8294C /* ImageCacheService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCacheService.h; sourceTree = "<group>"; };
 		2FF70FE32DB60A0600D8294C /* ImageCacheService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCacheService.m; sourceTree = "<group>"; };
 		3052079DD16D610915C862E2 /* Pods-test1.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test1.0.debug.xcconfig"; path = "Target Support Files/Pods-test1.0/Pods-test1.0.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				2FF70FE32DB60A0600D8294C /* ImageCacheService.m */,
 				2F526E1C2D9E2D5E00B5A26E /* ScreenScaling.h */,
 				2F526E1D2D9E2D5E00B5A26E /* ScreenScaling.m */,
+				2FE05D112DBF632900238BE0 /* ShowImageFullVC.h */,
+				2FE05D122DBF632900238BE0 /* ShowImageFullVC.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				2FA0D1912DA8E2EE00370D61 /* NoticeAlertView.m in Sources */,
 				2FE05D022DB7979D00238BE0 /* WebSocketManager.m in Sources */,
 				2FE05D102DBA2CFA00238BE0 /* EmojiViewModel.m in Sources */,
+				2FE05D132DBF632900238BE0 /* ShowImageFullVC.m in Sources */,
 				2FE05D032DB7979D00238BE0 /* WebSocketHelper.m in Sources */,
 				2FD3EF9A2D9BD523006D65D8 /* TopBar.m in Sources */,
 				2F509A3E2DA4BFD2008621D4 /* RecommendView.m in Sources */,

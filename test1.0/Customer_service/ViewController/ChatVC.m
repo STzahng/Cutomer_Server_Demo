@@ -486,6 +486,7 @@
         ImageTextCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
             cell = [[ImageTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell.contentView.userInteractionEnabled  = YES;
         }
         cell.delegate = self;
         [cell configureWithMessage:message];
@@ -565,6 +566,9 @@
     [self.viewModel handleMessageUpdated:message];
 }
 
+- (void)imageDidPresent:(UIViewController *)imageVC {
+    [self presentViewController:imageVC animated:YES completion:nil];
+}
 #pragma mark - NoticeScrollViewDelegate
 
 - (void)noticeScrollView:(NoticeScrollView *)scrollView didSelectNoticeAtIndex:(NSInteger)index {

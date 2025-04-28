@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ImageTextCellDelegate <NSObject>
 - (void)imageTextCell:(ImageTextCell *)cell withMessage:(MessageModel *)message;
+- (void)imageDidPresent:(UIViewController *)imageVC;
 @end
 
 @interface ImageTextCell : UITableViewCell
@@ -22,11 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<ImageTextCellDelegate> delegate;
 - (void)configureWithMessage:(MessageModel *)message;
 
-/**
- * 更新Cell的图片，当某个图片加载完成时调用
- * @param image 加载完成的图片
- * @param url 图片URL
- */
+
 - (void)updateWithImage:(UIImage *)image forURL:(NSString *)url;
 
 /**

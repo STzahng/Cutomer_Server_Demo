@@ -151,6 +151,7 @@
                 attachment.bounds = CGRectMake(0, -4, emojiSize, emojiSize); // -4调整垂直位置
                 
                 // 创建带附件的属性字符串
+                //
                 NSAttributedString *emojiAttributedString = [NSAttributedString attributedStringWithAttachment:attachment];
                 
                 // 替换原文本中的占位符
